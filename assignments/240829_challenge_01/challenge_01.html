@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>oz코딩스쿨 챌린지 1 과제</title>
+  </head>
+  <body>
+    <h1>회원가입</h1>
+    <p><strong>OZ코딩스쿨에 오신 것을 환영합니다!🤗</strong></p>
+    <img src="./logo.png" alt="OZ코딩스쿨 로고" width="300" />
+    <br />
+    <form>
+      <label for="username">이름</label>
+      <input id="username" name="username" type="text" placeholder="이름" />
+      <div>
+        <input id="female" name="gender" type="radio" value="female" />
+        <label for="female">여자</label>
+        <input id="male" name="gender" type="radio" value="female" />
+        <label for="male">남자</label>
+        <input id="not-applicable" name="gender" type="radio" value="female" />
+        <label for="not-applicable">해당없음</label>
+      </div>
+      <div>
+        <label for="birthday">생일</label>
+        <input id="birthday" name="birthday" type="date" />
+      </div>
+      <div>
+        <label for="phone">휴대폰번호</label>
+        <input id="phone" name="phone" type="tel" />
+      </div>
+      <div>
+        <label for="email">이메일</label>
+        <input id="email" name="email" type="email" />
+      </div>
+      <div>
+        <label for="password">비밀번호</label>
+        <input id="password" name="password" type="password" />
+      </div>
+      <div>
+        <label for="description">자기소개</label>
+        <br />
+        <textarea
+          id="description"
+          name="description"
+          rows="3"
+          cols="30"
+        ></textarea>
+      </div>
+      <hr />
+      <p>아래 약관에 동의를 눌러주세요.</p>
+      <ul>
+        <li>
+          <input id="agree1" name="agree1" type="checkbox" />
+          <label for="agree1">남과 비교하지 않기</label><br />
+          <span>
+            남과 나를 비교하지 않고 <strong>어제의 나</strong>와
+            <strong>오늘의 나</strong>를 비교하여 얼마나 성장했는지 가늠해요.
+          </span>
+        </li>
+        <li>
+          <input id="agree2" name="agree2" type="checkbox" />
+          <label for="agree2">시간을 투자하기</label><br />
+          <span>
+            시간을 투자하고 노력할수록
+            <strong>완성도 있고 성취감 있는 결과를 만들어낼 수 있어요.</strong>
+          </span>
+        </li>
+        <li>
+          <input id="agree3" name="agree3" type="checkbox" />
+          <label for="agree3">함께할 동료 만들기</label><br />
+          <span>
+            서로서로 가르쳐주고 배우기도 하며 함께할 동료를 만들어보세요.<br />
+            <strong
+              >함께 성장할수록 마지막 프로젝트의 완성도 또한
+              높아진답니다.</strong
+            >
+          </span>
+        </li>
+        <li>
+          <input id="agree4" name="agree4" type="checkbox" />
+          <label for="agree4">자원을 적극 활용하기</label><br />
+          <span>
+            저희 운영진은 여러분을 위해 상시 대기중...!<br /><strong
+              >모르는게 있으면 꼭! 물어봐주세요.😘</strong
+            >
+          </span>
+        </li>
+      </ul>
+      <hr />
+      <button>회원가입하기</button>
+    </form>
+    <a href="https://ozcodingschool.com/" target="_blank"
+      >오즈코딩스쿨 홈페이지 구경하기</a
+    >
+  </body>
+</html>
