@@ -14,7 +14,7 @@ section {
 }
 
 ul {
-  padding-left: 20px;
+  list-style: disc inside;
   line-height: 1.8;
 }
 
