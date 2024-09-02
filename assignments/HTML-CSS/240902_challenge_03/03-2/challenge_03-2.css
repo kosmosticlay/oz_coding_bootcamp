@@ -1,0 +1,152 @@
+body {
+  width: 100%;
+  height: 100vh;
+  background-color: #cfe3ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.snowman-container {
+  width: 400px;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  position: relative;
+}
+
+/* 모자 */
+.hat {
+  position: relative;
+  z-index: 5;
+  top: 40px;
+  transform: rotate(10deg);
+  transform-origin: 50% 120%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.hat1 {
+  width: 70px;
+  height: 70px;
+  background-color: black;
+  border-radius: 10px 10px 0 0;
+}
+.hat2 {
+  width: 130px;
+  height: 15px;
+  background-color: black;
+  border-radius: 0 0 10px 10px;
+}
+
+/* 첫번쨰 몸통(얼굴) */
+.snow1 {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #eae9e9, #faf9f9);
+  position: relative;
+  z-index: 4;
+  top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.face {
+  width: 70px;
+  height: 30px;
+}
+
+.eyes {
+  display: flex;
+  justify-content: space-between;
+}
+
+.eye {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: black;
+}
+
+.mouth {
+  width: 30px;
+  height: 12px;
+  background-color: #eeab73;
+  border-radius: 0 0 0 10px;
+  position: relative;
+  left: 10px;
+}
+
+/* 두번째 몸통(몸) */
+.snow2 {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #eae9e9, #faf9f9);
+  position: relative;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.arm1,
+.arm2 {
+  width: 80px;
+  height: 3px;
+  background-color: #8b7254;
+  border-radius: 10px;
+  position: absolute;
+  z-index: 2;
+}
+
+.arm1 {
+  top: 40px;
+  rotate: 30deg;
+  left: 15%;
+  top: 45%;
+}
+
+.arm2 {
+  top: 40px;
+  rotate: -30deg;
+  right: 15%;
+  top: 45%;
+}
+
+.buttons {
+  position: absolute;
+  top: 35px;
+}
+
+.button {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: black;
+  position: relative;
+}
+
+.button:nth-child(2) {
+  top: 10px;
+}
+
+.button:nth-child(3) {
+  top: 20px;
+}
+
+/* 세번째 몸통(다리) */
+.snow3 {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #eae9e9, #faf9f9);
+  position: relative;
+  z-index: 2;
+  bottom: 40px;
+}
