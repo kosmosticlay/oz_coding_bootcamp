@@ -1,0 +1,136 @@
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 헤더 */
+header {
+  width: 100%;
+  height: 80px;
+  background-color: #69939a;
+  padding: 0 50px;
+  display: flex;
+}
+
+#logo {
+  min-width: 200px;
+  height: 100%;
+  background-color: #94bdc3;
+  margin-right: 50px;
+}
+
+#gnb {
+  min-width: 500px;
+  width: calc(100% - 200px);
+}
+
+.nav-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.nav-list li {
+  min-width: content;
+  height: 60%;
+  width: 20%;
+  margin: 0 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-list li a {
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.nav-list li a:hover {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+/* 섹션1 */
+#section_1 {
+  width: 100%;
+  height: 300px;
+  background-color: papayawhip;
+}
+
+/* 섹션2 */
+#section_2 {
+  width: 100%;
+  height: 300px;
+  padding: 50px;
+  background-color: #69939a;
+}
+
+.circle-container {
+  width: 100%;
+  height: 100%;
+  background-color: #a6ccd2;
+  display: flex;
+  justify-content: space-between;
+}
+
+.circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 1px solid black;
+}
+
+/* 섹션 3 */
+#section_3 {
+  width: 100%;
+  height: max-content;
+  padding: 20px 50px;
+  background-color: #a6ccd2;
+}
+
+.con_wrap {
+  width: 100%;
+  height: 300px;
+  float: left;
+  margin: 20px 0;
+  background-color: white;
+}
+
+.con_wrap li:last-child {
+  margin-right: 0;
+  float: right;
+}
+
+.m_box {
+  width: 259px;
+  height: 100%;
+  margin-right: 40px;
+  background-color: #f07f92;
+  float: left;
+}
+
+.long_box {
+  width: 558px;
+  height: 100%;
+  margin-right: 40px;
+  background-color: #f2a6b4;
+  float: left;
+}
+
+/* 상단 버튼 */
+#top_btn {
+  width: 80px;
+  height: 80px;
+  position: fixed;
+  right: 30px;
+  bottom: 50px;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+  border-radius: 10px;
+}
