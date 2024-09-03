@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>oz코딩스쿨 챌린지 2 과제</title>
+    <title>oz코딩스쿨 챌린지 4 과제</title>
+    <link rel="stylesheet" href="./styles/reset.css" />
     <link rel="stylesheet" href="./styles/challenge_04-1.css" />
   </head>
   <body>
@@ -15,17 +16,16 @@
         width="300"
       />
     </aside>
-    <div class="form-container">
+    <div id="join-container">
       <header>
         <h1>회원가입</h1>
         <p>OZ코딩스쿨에 오신 것을 환영합니다!🤗</p>
-        <br />
       </header>
       <main>
-        <form>
+        <form id="join-form">
           <label class="sr-only" for="username">이름</label>
           <input
-            class="form-input"
+            class="join-input"
             id="username"
             name="username"
             type="text"
@@ -35,7 +35,7 @@
 
           <label class="sr-only" for="phone">전화번호</label>
           <input
-            class="form-input"
+            class="join-input"
             id="phone"
             name="phone"
             type="tel"
@@ -45,7 +45,7 @@
 
           <label class="sr-only" for="email">이메일</label>
           <input
-            class="form-input"
+            class="join-input"
             id="email"
             name="email"
             type="email"
@@ -54,7 +54,7 @@
           />
           <label class="sr-only" for="password">비밀번호</label>
           <input
-            class="form-input"
+            class="join-input"
             id="password"
             name="password"
             type="password"
@@ -64,7 +64,7 @@
 
           <label class="sr-only" for="date">가입일자</label>
           <input
-            class="form-input"
+            class="join-input"
             id="date"
             name="date"
             type="date"
@@ -138,7 +138,7 @@
               </li>
             </ul>
           </div>
-          <button>회원가입하기</button>
+          <button id="join-submitBtn">회원가입하기</button>
         </form>
       </main>
       <footer>
@@ -146,6 +146,66 @@
           >오즈코딩스쿨 홈페이지 구경하기 ></a
         >
       </footer>
+    </div>
+    <div id="inquire-toggle">
+      <input
+        id="inquire-toggle__input"
+        type="checkbox"
+        aria-label="문의 하기 체크박스"
+      />
+      <div id="inquire-container">
+        <header id="inquire-header">
+          <div class="arrow">&lt;</div>
+          <div id="inquire-header__title">
+            <div class="logo logo--md"></div>
+            <div>
+              <h2>오즈코딩스쿨</h2>
+              <span>Back on 11:00 AM</span>
+            </div>
+          </div>
+        </header>
+        <section id="inquire-chat-container">
+          <article id="inquire-notice">
+            <span>📞</span>
+            <p>문의해 주시는 교육 과정명을 꼭 알려주세요:&#41;</p>
+          </article>
+          <article id="inquire-info">
+            <div class="logo logo--lg"></div>
+            <h2>Contact 오즈코딩스쿨</h2>
+            <span>See business hours &gt;</span>
+            <span>September 2 10:10 PM</span>
+          </article>
+          <section class="incoming-msg">
+            <div class="logo logo--sm"></div>
+            <div class="incoming-msg__content">
+              <span>오즈코딩스쿨</span>
+              <pre>안녕하세요!
+궁금한 게 있으면 편하게 물어봐 주세요👀
+문의해 주시는 <strong>교육 과정명</strong>을 꼭 알려주세요:&#41;</pre>
+              <span>10: 00 PM</span>
+            </div>
+          </section>
+          <section class="outgoing-msg">
+            <div class="outgoing-msg__content">
+              <pre>
+안녕하세요 :&#41;
+프론트엔드 과정 문의하러 왔어요!</pre
+              >
+              <span>10:01 PM</span>
+            </div>
+          </section>
+        </section>
+        <form id="inquire-form">
+          <input
+            id="inquire-input"
+            type="text"
+            placeholder="메시지를 입력하세요..."
+          />
+          <button id="inquire-submitBtn">
+            <span class="arrow">&gt;</span>
+          </button>
+        </form>
+      </div>
     </div>
   </body>
 </html>
