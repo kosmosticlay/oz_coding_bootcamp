@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML/CSS 챌린지 5 과제</title>
+    <link rel="stylesheet" href="./styles/reset.css" />
+    <style>
+      .flex {
+        display: flex;
+      }
+    </style>
+    <link rel="stylesheet" href="./styles/header.css" />
+    <link rel="stylesheet" href="./styles/main.css" />
+    <link rel="stylesheet" href="./styles/footer.css" />
+    <!-- icons -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+  </head>
+  <body>
+    <header class="header flex">
+      <h1 class="logo">🌸오즈마켓🌸</h1>
+      <nav class="nav">
+        <ul class="flex">
+          <li><a href="#">중고거래</a></li>
+          <li><a href="#">동네가게</a></li>
+          <li><a href="#">알바</a></li>
+          <li><a href="#">부동산 직거래</a></li>
+          <li><a href="#">중고차 직거래</a></li>
+        </ul>
+      </nav>
+      <section class="search flex">
+        <div class="search--screen-lg flex">
+          <input
+            id="search-input"
+            type="text"
+            placeholder="물품이나 동네를 검색해보세요."
+          />
+          <button id="search-btn">검색</button>
+        </div>
+        <div class="search--screen-sm flex">
+          <span class="material-symbols-outlined"> search </span>
+          <span class="material-symbols-outlined"> menu </span>
+        </div>
+      </section>
+    </header>
+    <main>
+      <section class="info">
+        <h2>
+          우리 동네에서 찾는<br />
+          오즈알바
+        </h2>
+        <span
+          >걸어서 10분 거리의 <br />
+          동네 알바들 여기 다 있어요.</span
+        >
+      </section>
+      <section class="banner">
+        <h2>
+          오즈알바 이용방법이 궁금하다면<br />
+          지금 바로 알아보세요!
+        </h2>
+        <a href="#">이용방법 알아보기</a>
+      </section>
+      <section class="jobs">
+        <h2>인기 오즈알바</h2>
+        <ul class="jobs-list flex">
+          <li class="jobs-item flex">
+            <div class="jobs-item__image"></div>
+            <div class="jobs-item__content flex">
+              <h3>오즈마켓 고객센터 단기계약직 모집(1달 계약직)</h3>
+              <p>주식회사 오즈서비스 - 고양시 덕양구 화정동</p>
+              <p>월급 10,000,000</p>
+            </div>
+          </li>
+          <li class="jobs-item flex">
+            <div class="jobs-item__image"></div>
+            <div class="jobs-item__content flex">
+              <h3>오즈마켓 고객센터 단기계약직 모집(1달 계약직)</h3>
+              <p>주식회사 오즈서비스 - 고양시 덕양구 화정동</p>
+              <p>월급 10,000,000</p>
+            </div>
+          </li>
+          <li class="jobs-item flex">
+            <div class="jobs-item__image"></div>
+            <div class="jobs-item__content flex">
+              <h3>오즈마켓 고객센터 단기계약직 모집(1달 계약직)</h3>
+              <p>주식회사 오즈서비스 - 고양시 덕양구 화정동</p>
+              <p>월급 10,000,000</p>
+            </div>
+          </li>
+          <li class="jobs-item flex">
+            <div class="jobs-item__image"></div>
+            <div class="jobs-item__content flex">
+              <h3>오즈마켓 고객센터 단기계약직 모집(1달 계약직)</h3>
+              <p>주식회사 오즈서비스 - 고양시 덕양구 화정동</p>
+              <p>월급 10,000,000</p>
+            </div>
+          </li>
+        </ul>
+      </section>
+      <section class="banner">
+        <h2>
+          오즈알바 이용방법이 궁금하다면<br />
+          지금 바로 알아보세요!
+        </h2>
+        <a href="#">이용방법 알아보기</a>
+      </section>
+    </main>
+    <footer class="footer flex">
+      <nav class="footer-nav flex">
+        <ul>
+          <li><a href="#">중고거래</a></li>
+          <li><a href="#">동네가게</a></li>
+          <li><a href="#">오즈알바</a></li>
+          <li><a href="#">부동산 직거래</a></li>
+          <li><a href="#">중고차 직거래</a></li>
+        </ul>
+        <ul>
+          <li><a href="#">오즈비즈니스</a></li>
+          <li><a href="#">채팅하기</a></li>
+        </ul>
+        <ul>
+          <li><a href="#">자주 묻는 질문</a></li>
+          <li><a href="#">회사 소개</a></li>
+          <li><a href="#">인재 채용</a></li>
+        </ul>
+      </nav>
+      <section class="footer-download">
+        <p>오즈마켓 앱 다운로드</p>
+        <div class="footer-download__apps flex">
+          <a href="#"
+            >App Store<span class="material-symbols-outlined">
+              arrow_outward
+            </span></a
+          >
+          <a href="#"
+            >Google Play<span class="material-symbols-outlined">
+              arrow_outward
+            </span></a
+          >
+        </div>
+      </section>
+    </footer>
+  </body>
+</html>

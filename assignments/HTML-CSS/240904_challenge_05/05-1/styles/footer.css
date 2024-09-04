@@ -1,0 +1,48 @@
+.footer {
+  margin: 5rem 0;
+  padding: 5rem 3rem 0 3rem;
+  border-top: 1px solid gray;
+  justify-content: space-between;
+}
+
+.footer-nav {
+  line-height: 1.5;
+  font-weight: bold;
+  gap: 5rem;
+  color: #535353;
+}
+
+.footer-nav ul li a {
+  text-wrap: nowrap;
+}
+
+.footer-download p {
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.footer-download__apps {
+  gap: 1rem;
+}
+
+.footer-download__apps a {
+  padding: 1rem 2rem;
+  background-color: #ffeff1;
+  border-radius: 0.25rem;
+}
+
+@media screen and (max-width: 1024px) {
+  .footer {
+    flex-direction: column-reverse;
+  }
+  .footer-download__apps {
+    margin-bottom: 3rem;
+  }
+
+  .footer-download__apps a {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+  }
+}

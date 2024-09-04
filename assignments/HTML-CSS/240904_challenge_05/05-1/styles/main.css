@@ -1,0 +1,133 @@
+/* info section */
+.info {
+  width: 100%;
+  height: 25rem;
+  background-color: #f0efff;
+  padding: 5rem 3rem 0 3rem;
+  line-height: 1.2;
+}
+
+.info h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 2rem 0;
+  line-height: 1.5;
+}
+
+/* jobs section */
+.jobs {
+  width: 100%;
+  padding: 0 3rem;
+}
+
+.jobs h2 {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin: 2rem 0;
+}
+
+.jobs-list {
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.jobs-item {
+  min-width: 25rem;
+  width: 48%;
+  margin-bottom: 2rem;
+}
+
+.jobs-item__image {
+  width: 8rem;
+  height: 8rem;
+  margin-right: 1rem;
+  flex-shrink: 0;
+  background-color: blueviolet;
+}
+
+.jobs-item__content {
+  line-height: 1.3;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.jobs-item__content h3 {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.jobs-item__content p:first-of-type {
+  color: gray;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.jobs-item__content p:last-of-type {
+  font-weight: bold;
+}
+
+/* banner section */
+.banner {
+  width: 90%;
+  height: 10rem;
+  padding: 3rem;
+  margin: 2rem auto;
+  background-color: #f0efff;
+  border-radius: 1rem;
+  background: linear-gradient(90deg, #ff6dc6, #ffeff1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.banner h2 {
+  margin: 2rem 0;
+  font-size: 1.3rem;
+  font-weight: bold;
+  line-height: 1.5;
+}
+
+.banner a {
+  padding: 1rem 2rem;
+  border-radius: 0.25rem;
+  background-color: blueviolet;
+  color: white;
+  font-weight: bold;
+}
+
+.banner a:active {
+  scale: 90%;
+  transition: all 0.3s;
+}
+
+@media screen and (max-width: 1250px) {
+  .jobs {
+    padding: 0 3rem;
+  }
+  .jobs-item {
+    min-width: 35rem;
+    flex-shrink: 0;
+  }
+  .jobs-item__content {
+    flex-shrink: 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .info {
+    padding: 5rem 1rem 0 1rem;
+  }
+  .jobs {
+    padding: 0 1rem;
+  }
+  .banner {
+    height: max-content;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .banner h2 {
+    margin-top: 0;
+  }
+}
