@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>몬스터잡기</title>
+  </head>
+  <body>
+    <div id="container">
+      <h1>몬스터 잡기 게임을 시작합니다.</h1>
+    </div>
+    <script>
+      let monsterHP = 100;
+      let attack;
+
+      while (true) {
+        attack = parseInt(
+          window.prompt(
+            "1회 공격 시 데미지는 얼마인가요? (양의 정수로 입력하세요)"
+          )
+        );
+
+        if (attack > 0) break;
+      }
+
+      for (let i = 1; monsterHP > 0; i++) {
+        monsterHP -= attack;
+
+        if (monsterHP < 0) {
+          monsterHP = 0;
+        }
+
+        // n번째 공격 메시지
+        const $attackMsg = document.createElement("p");
+        $attackMsg.textContent = `몬스터를 ${i}회 공격했습니다.`;
+        document.getElementById("container").append($attackMsg);
+        // 남은 HP 메시지
+        const $remainHPMsg = document.createElement("p");
+        $remainHPMsg.textContent = `몬스터의 남은 HP는 ${monsterHP}입니다!`;
+        document.getElementById("container").append($remainHPMsg);
+      }
+
+      // 게임 종료 메시지
+      const $gameoverMsg = document.createElement("p");
+      $gameoverMsg.textContent = `몬스터 잡기 완료! 수고하셨습니다.`;
+      document.getElementById("container").append($gameoverMsg);
+    </script>
+  </body>
+</html>
