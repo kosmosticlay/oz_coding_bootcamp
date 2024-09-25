@@ -2,16 +2,13 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=
-    , initial-scale=1.0"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>JS 최종 과제(이혜민)</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>혜민's 계산기</h1>
+    <h1 aria-label="혜민의 계산기">혜민's 계산기</h1>
     <div class="calculator-container">
       <header class="window-controls-list" aria-label="창 제어 버튼">
         <button class="window-controls" aria-label="닫기 버튼" title="닫기">
@@ -24,8 +21,31 @@
           <span class="hidden">+</span>
         </button>
       </header>
-      <div class="display-container">display</div>
-      <div class="buttons-container">buttons</div>
+      <div class="display-container" aria-label="디스플레이 화면">
+        <div class="formula">100 - 100 =</div>
+        <div class="result">0</div>
+      </div>
+      <div class="buttons-container" aria-label="숫자 및 연산자 버튼">
+        <button class="function" aria-label="초기화">C</button>
+        <button class="function" aria-label="양수/음수 변경">±</button>
+        <button class="function" aria-label="백분율">%</button>
+        <button class="operator" aria-label="나누기">/</button>
+        <button class="number">7</button>
+        <button class="number">8</button>
+        <button class="number">9</button>
+        <button class="operator" aria-label="곱하기">*</button>
+        <button class="number">4</button>
+        <button class="number">5</button>
+        <button class="number">6</button>
+        <button class="operator" aria-label="빼기">-</button>
+        <button class="number">1</button>
+        <button class="number">2</button>
+        <button class="number">3</button>
+        <button class="operator" aria-label="더하기">+</button>
+        <button class="number zero">0</button>
+        <button class="operator" aria-label="소수점">.</button>
+        <button class="operator" aria-label="결과">=</button>
+      </div>
     </div>
   </body>
 </html>

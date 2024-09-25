@@ -28,25 +28,6 @@ h1 {
   gap: 10px;
 }
 
-.display-container,
-.buttons-container {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid;
-}
-
-.display-container {
-  height: 30%;
-  border-color: red;
-  color: red;
-}
-
-.buttons-container {
-  flex-grow: 1;
-  border-color: blue;
-  color: blue;
-}
-
 /* 창 제어 버튼 */
 .window-controls-list {
   width: 70px;
@@ -56,6 +37,7 @@ h1 {
 
 .window-controls-list:hover span {
   display: inline-block;
+  font-size: 0.9rem;
 }
 
 .window-controls {
@@ -78,6 +60,67 @@ h1 {
 }
 .window-controls:nth-child(3) {
   background-color: #00c600;
+}
+
+/* 계산기 화면과 버튼 컨테이너 */
+.display-container,
+.buttons-container {
+  width: 100%;
+  border: 1px solid;
+}
+
+/* 계산기 화면 */
+.display-container {
+  height: 20%;
+  margin-bottom: 10px;
+  padding: 20px;
+  border-color: red;
+  display: flex;
+  flex-direction: column;
+}
+
+.result {
+  flex: 1;
+  font-size: 2rem;
+  color: black;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* 계산기 버튼 */
+.buttons-container {
+  flex-grow: 1;
+  border-color: blue;
+  color: blue;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+button {
+  width: 25%;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  color: black;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #ffc400;
+}
+
+button:active {
+  background-color: #73ad73;
+}
+
+.zero {
+  width: 50%;
+  height: 20%;
 }
 
 /* 공통 */
