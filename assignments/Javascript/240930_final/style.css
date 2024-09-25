@@ -1,0 +1,86 @@
+/* 모든 요소의 기본 여백 제거 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* HTML과 Body의 기본 설정 */
+html,
+body {
+  height: 100%;
+}
+
+h1 {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.calculator-container {
+  width: 500px;
+  height: 80%;
+  max-height: 650px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid green;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.display-container,
+.buttons-container {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid;
+}
+
+.display-container {
+  height: 30%;
+  border-color: red;
+  color: red;
+}
+
+.buttons-container {
+  flex-grow: 1;
+  border-color: blue;
+  color: blue;
+}
+
+/* 창 제어 버튼 */
+.window-controls-list {
+  width: 70px;
+  display: flex;
+  gap: 5px;
+}
+
+.window-controls-list:hover span {
+  display: inline-block;
+}
+
+.window-controls {
+  width: 15px;
+  height: 15px;
+  margin: 0 2px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.window-controls:nth-child(1) {
+  background-color: #ff4d00;
+}
+.window-controls:nth-child(2) {
+  background-color: #ffc400;
+}
+.window-controls:nth-child(3) {
+  background-color: #00c600;
+}
+
+/* 공통 */
+.hidden {
+  display: none;
+}
