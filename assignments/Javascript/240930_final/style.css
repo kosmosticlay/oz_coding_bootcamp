@@ -9,16 +9,22 @@
 html,
 body {
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 h1 {
   text-align: center;
+  font-size: 1.5rem;
   margin: 20px 0;
 }
 
 .calculator-container {
   width: 500px;
   height: 80%;
+  min-height: 400px;
   max-height: 650px;
   margin: 0 auto;
   padding: 20px;
@@ -63,25 +69,29 @@ h1 {
 }
 
 /* 계산기 화면과 버튼 컨테이너 */
-.display-container,
-.buttons-container {
+.display,
+.buttons {
   width: 100%;
   border: 1px solid;
 }
 
 /* 계산기 화면 */
-.display-container {
+.display {
   height: 20%;
   margin-bottom: 10px;
-  padding: 20px;
+  padding: 10px;
   border-color: red;
   display: flex;
   flex-direction: column;
 }
 
+.formula {
+  font-size: 0.8rem;
+}
+
 .result {
   flex: 1;
-  font-size: 2rem;
+  font-size: 2.2rem;
   color: black;
   font-weight: bold;
   display: flex;
@@ -90,7 +100,7 @@ h1 {
 }
 
 /* 계산기 버튼 */
-.buttons-container {
+.buttons {
   flex-grow: 1;
   border-color: blue;
   color: blue;
@@ -98,7 +108,7 @@ h1 {
   flex-wrap: wrap;
 }
 
-button {
+.button {
   width: 25%;
   height: 20%;
   display: flex;
@@ -110,11 +120,11 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+.button:hover {
   background-color: #ffc400;
 }
 
-button:active {
+.button:active {
   background-color: #73ad73;
 }
 
