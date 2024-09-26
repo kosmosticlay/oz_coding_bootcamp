@@ -97,6 +97,7 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  overflow: hidden;
 }
 
 /* 계산기 버튼 */
