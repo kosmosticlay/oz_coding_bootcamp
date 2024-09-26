@@ -1,0 +1,78 @@
+/* 모든 요소의 기본 여백 제거 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* HTML과 Body의 기본 설정 */
+html,
+body {
+}
+
+#container {
+  width: 100%;
+  max-width: 640px;
+  margin: auto;
+}
+
+header {
+  width: 100%;
+  max-width: 640px;
+  height: 60px;
+  border-bottom: 1px solid #00000033;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  top: 0;
+}
+.header__search {
+  display: flex;
+  align-items: center;
+}
+
+input,
+button,
+select {
+  height: 30px;
+  border: 0.5px solid gray;
+}
+
+main {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin-top: 60px;
+}
+
+img {
+  width: 200px;
+  height: 200px;
+}
+.more,
+.tothetop {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  cursor: pointer;
+}
+
+.more {
+  color: #ffffff;
+  background-color: #cd8f6b;
+  left: 100px;
+  bottom: 100px;
+}
+
+.tothetop {
+  color: #ffffff;
+  background-color: #ab4a12;
+  right: 100px;
+  bottom: 100px;
+}
