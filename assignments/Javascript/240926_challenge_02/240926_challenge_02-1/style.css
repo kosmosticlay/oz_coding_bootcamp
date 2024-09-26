@@ -11,14 +11,93 @@ body {
   height: 100%;
 }
 
-.todo-item {
+.wrapper {
+  width: 100%;
   display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
 }
 
-.icon {
+h1 {
+  margin: 20px 0;
+}
+
+/* Todo Form */
+
+#todo-form {
+  display: flex;
+  width: 40%;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+#todo-input {
+  flex: 1;
+  padding: 0 10px;
+  outline: none;
+}
+#todo-input:focus {
+  border: 2px solid #0075ff;
+}
+
+#submit-btn {
+  width: 100px;
+  height: 40px;
+  cursor: pointer;
+  background-color: #0075ff;
+  color: white;
+  font-weight: bold;
+  border: none;
+}
+
+#submit-btn:hover {
+  background-color: black;
+  color: white;
+}
+
+/* Todo List */
+#todo-container {
+  width: 30%;
+}
+
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  cursor: pointer;
+}
+
+.todo-checkbox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.todo-value {
+  margin: 0 10px;
+  flex: 1;
+  cursor: pointer;
+}
+
+.delete-btn {
   width: 30px;
+  min-width: 30px;
   height: 30px;
+  justify-self: flex-end;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+
+.delete-btn:hover {
+  color: #0075ff;
 }
 
 .completed {
