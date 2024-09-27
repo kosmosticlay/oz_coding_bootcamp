@@ -91,3 +91,37 @@ function handleOperate($button) {
   }
 }
 ```
+
+# 3. 부동 소수점으로 인한 연산 오류 문제
+
+## 3.1 문제
+
+5.9 - 3.9 의 결과값이 디스플레이에 2.0000000000000004로 출력된다.
+
+## 3.2 해결 방법
+
+- 일반적으로 부동소수점으로 인한 연산 오류는 소수점 아래 15~17번째 자리에서 발생한다. 따라서 연산 오류를 줄이기 위해 소수점 11번째 자리에서 반올림하여 소수점 아래 10자리 까지만 남도록 `toFixed(10)` 메서드를 사용했다.
+- `toFixed()` 메서드의 결과값은 문자열이므로 `parseFloat()`메서드를 사용하여 다시 숫자로 변환하였다.
+
+```javascript
+function handleCalculate(first, second, operator) {
+  let result;
+
+  switch (operator) {
+    case "*":
+      result = Number(first) * Number(second);
+      break;
+    case "+":
+      result = Number(first) + Number(second);
+      break;
+    case "-":
+      result = Number(first) - Number(second);
+      break;
+    case "/":
+      result = Number(first) / Number(second);
+      break;
+  }
+
+  return parseFloat(result.toFixed(10));
+}
+```
