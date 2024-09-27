@@ -51,3 +51,43 @@ if ($button.className.includes("number")) {
   }
 }
 ```
+
+<br/>
+
+## 2. 두번째 피연산자 입력시 `.`을 클릭했을때 디스플레이에 적용되지 않는 문제
+
+### 2.1 문제
+
+연산자가 클릭된 후 두 번째 피연산자를 입력할 때 소수점 `.`버튼을 눌러도 디스플레이에 제대로 반영되지 않는 문제가 발생한다
+
+### 2.2 해결 방법
+
+소수점(.) 버튼이 클릭되었을 때 `operatorClicked`가 `true`라면, 디스플레이를 `0.`으로 초기화 하고, 그외에는 디스플레이에 보이는 숫자에 소수점 `.`을 이어서 붙이도록 조건문을 작성했다
+
+```javascript
+function handleOperate($button) {
+  if ($button.textContent === "=") {
+    if (!operatorClicked) {
+      secondOperand = $result.textContent;
+    }
+    const result = handleCalculate(firstOperand, secondOperand, operator);
+    $result.textContent = result;
+    firstOperand = result;
+    operator = null;
+  }
+  // 소수점 버튼 추가하기
+  else if ($button.textContent === ".") {
+    if (operatorClicked) {
+      $result.textContent = "0.";
+    } else {
+      $result.textContent += ".";
+    }
+  } else {
+    firstOperand = $result.textContent;
+    operator = $button.textContent;
+    operatorClicked = true;
+    console.log(`First Operand: ${$result.textContent}`);
+    console.log(`Operator: ${$button.textContent}`);
+  }
+}
+```

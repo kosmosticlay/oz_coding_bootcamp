@@ -21,8 +21,7 @@ function handleOperate($button) {
   else if ($button.textContent === ".") {
     if (operatorClicked) {
       $result.textContent = "0.";
-    }
-    if (!$result.textContent.includes(".")) {
+    } else {
       $result.textContent += ".";
     }
   } else {
