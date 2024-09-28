@@ -9,16 +9,13 @@ let prevResult = null;
 let operatorClicked = false;
 
 function handleOperate($button) {
+  // = 버튼 클릭시
   if ($button.textContent === "=") {
-    if (!operatorClicked) {
-      secondOperand = $result.textContent;
-    }
-    const result = handleCalculate(firstOperand, secondOperand, operator);
-    $result.textContent = result;
-    firstOperand = result;
-    operator = null;
+    if (operator === null) return;
+    secondOperand = $result.textContent;
+    displayResult();
   }
-  // 소수점 버튼 추가하기
+  // 소수점 버튼 클릭시
   else if ($button.textContent === ".") {
     if (operatorClicked) {
       $result.textContent = "0.";
@@ -27,19 +24,22 @@ function handleOperate($button) {
       if ($result.textContent.includes(".")) return;
       $result.textContent += ".";
     }
-  } else {
+  }
+  // 산술연산자 클릭시
+  else {
+    // 첫번째 피연산자가 없을 때
     if (firstOperand === null) {
       firstOperand = $result.textContent;
       operator = $button.textContent;
       operatorClicked = true;
-      console.log(`First Operand: ${$result.textContent}`);
-      console.log(`Operator: ${$button.textContent}`);
-    } else {
     }
-    operator = $button.textContent;
-    operatorClicked = true;
-    console.log(`First Operand: ${$result.textContent}`);
-    console.log(`Operator: ${$button.textContent}`);
+    // 두번째 피연산자를 입력할 때
+    else {
+      secondOperand = $result.textContent;
+      displayResult();
+      operator = $button.textContent;
+      operatorClicked = true;
+    }
   }
 }
 
@@ -60,7 +60,6 @@ function handleNumber($button) {
     } else {
       $result.textContent = $button.textContent;
     }
-    secondOperand = $result.textContent;
     operatorClicked = false;
   } else {
     if ($result.textContent === "0") {
@@ -90,6 +89,15 @@ function handleCalculate(first, second, operator) {
   }
 
   return parseFloat(result.toFixed(10));
+}
+
+function displayResult() {
+  const prevResult = handleCalculate(firstOperand, secondOperand, operator);
+  $result.textContent = prevResult;
+  firstOperand = prevResult ? prevResult : firstOperand;
+  secondOperand = null;
+  console.log(`First Operand: ${firstOperand}`);
+  console.log(`Operator: ${operator}`);
 }
 
 $buttons.forEach(($button) => {
