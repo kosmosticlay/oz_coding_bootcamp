@@ -5,6 +5,7 @@ const $result = $display.querySelector(".result");
 let firstOperand = null;
 let secondOperand = null;
 let operator;
+let prevResult = null;
 let operatorClicked = false;
 
 function handleOperate($button) {
@@ -22,10 +23,19 @@ function handleOperate($button) {
     if (operatorClicked) {
       $result.textContent = "0.";
     } else {
+      // 디스플레이에 이미 소수점이 있으면 입력 무시하기
+      if ($result.textContent.includes(".")) return;
       $result.textContent += ".";
     }
   } else {
-    firstOperand = $result.textContent;
+    if (firstOperand === null) {
+      firstOperand = $result.textContent;
+      operator = $button.textContent;
+      operatorClicked = true;
+      console.log(`First Operand: ${$result.textContent}`);
+      console.log(`Operator: ${$button.textContent}`);
+    } else {
+    }
     operator = $button.textContent;
     operatorClicked = true;
     console.log(`First Operand: ${$result.textContent}`);
@@ -36,19 +46,23 @@ function handleOperate($button) {
 function handleFunction($button) {
   // Clear 기능 추가하기
   if ($button.textContent === "C") {
+    firstOperand = null;
+    secondOperand = null;
+    operator = null;
     $result.textContent = "0";
   }
 }
 
 function handleNumber($button) {
   if (operatorClicked) {
-    $result.textContent =
-      $result.textContent === "0."
-        ? $result.textContent + $button.textContent
-        : $button.textContent;
+    if ($result.textContent === "0.") {
+      $result.textContent += $button.textContent;
+    } else {
+      $result.textContent = $button.textContent;
+    }
+    secondOperand = $result.textContent;
     operatorClicked = false;
-  } else if (!operatorClicked) {
-    /* 질문: 위랑 아래랑 가독성이 어떤게 나을까요? */
+  } else {
     if ($result.textContent === "0") {
       $result.textContent = $button.textContent;
     } else {
