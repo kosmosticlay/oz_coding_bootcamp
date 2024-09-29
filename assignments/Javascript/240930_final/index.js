@@ -6,12 +6,12 @@ let firstOperand = null;
 let secondOperand = null;
 let operator;
 let prevResult = null;
-let operatorClicked = false;
+let isOperatorActive = false;
 
 function handleOperate($button) {
   // 소수점 버튼 클릭시
   if ($button.textContent === ".") {
-    if (operatorClicked) {
+    if (isOperatorActive) {
       $result.textContent = "0.";
     } else {
       // 디스플레이에 이미 소수점이 있으면 입력 무시하기
@@ -26,21 +26,21 @@ function handleOperate($button) {
       prevResult = handleCalculate(firstOperand, secondOperand, operator);
       displayResult();
       operator = null;
-      operatorClicked = true;
+      isOperatorActive = true;
       firstOperand = prevResult;
     }
     // 산술연산자 클릭시
     else {
       if (firstOperand === null) {
         firstOperand = $result.textContent;
-      } else if (!operatorClicked) {
+      } else if (!isOperatorActive) {
         secondOperand = $result.textContent;
         prevResult = handleCalculate(firstOperand, secondOperand, operator);
         displayResult();
         firstOperand = prevResult;
       }
       operator = $button.textContent;
-      operatorClicked = true;
+      isOperatorActive = true;
       console.log(`First Operand: ${firstOperand}`);
       console.log(`Operator: ${operator}`);
     }
@@ -55,16 +55,22 @@ function handleFunction($button) {
     operator = null;
     $result.textContent = "0";
   }
+  // % 기능 추가하기
+  else if ($button.textContent === "%") {
+    $result.textContent = String(Number($result.textContent * 0.01));
+    // console.log(firstOperand, operator, secondOperand);
+    isOperatorActive = true;
+  }
 }
 
 function handleNumber($button) {
-  if (operatorClicked) {
+  if (isOperatorActive) {
     if ($result.textContent === "0.") {
       $result.textContent += $button.textContent;
     } else {
       $result.textContent = $button.textContent;
     }
-    operatorClicked = false;
+    isOperatorActive = false;
   } else {
     if ($result.textContent === "0") {
       $result.textContent = $button.textContent;
