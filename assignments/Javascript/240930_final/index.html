@@ -5,28 +5,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>JS 최종 과제(이혜민)</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style/style.css" />
   </head>
   <body>
     <h1 aria-label="혜민의 계산기">혜민's 계산기</h1>
     <div class="calculator-container">
-      <header class="window-controls-list" aria-label="창 제어 버튼">
-        <button class="window-controls" aria-label="닫기 버튼" title="닫기">
-          <span class="hidden">x</span>
-        </button>
-        <button class="window-controls" aria-label="최소화 버튼" title="최소화">
-          <span class="hidden">-</span>
-        </button>
-        <button class="window-controls" aria-label="최대화 버튼" title="최대화">
-          <span class="hidden">+</span>
-        </button>
+      <header class="header">
+        <div class="window-controls-list" aria-label="창 제어 버튼">
+          <button class="window-controls" aria-label="닫기 버튼" title="닫기">
+            <span class="hidden">x</span>
+          </button>
+          <button
+            class="window-controls"
+            aria-label="최소화 버튼"
+            title="최소화"
+          >
+            <span class="hidden">-</span>
+          </button>
+          <button
+            class="window-controls"
+            aria-label="최대화 버튼"
+            title="최대화"
+          >
+            <span class="hidden">+</span>
+          </button>
+        </div>
+        <div class="header__buttons-list">
+          <button class="header__button" title="이전 결과 불러오기">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 512 512"
+              width="15"
+              height="15"
+            >
+              <path
+                fill="white"
+                d="M125.7 160l50.3 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L48 224c-17.7 0-32-14.3-32-32L16 64c0-17.7 14.3-32 32-32s32 14.3 32 32l0 51.2L97.6 97.6c87.5-87.5 229.3-87.5 316.8 0s87.5 229.3 0 316.8s-229.3 87.5-316.8 0c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0c62.5 62.5 163.8 62.5 226.3 0s62.5-163.8 0-226.3s-163.8-62.5-226.3 0L125.7 160z"
+              />
+            </svg>
+          </button>
+          <button class="header__button" title="복사하기">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 448 512"
+              width="15"
+              height="15"
+            >
+              <path
+                fill="white"
+                d="M384 336l-192 0c-8.8 0-16-7.2-16-16l0-256c0-8.8 7.2-16 16-16l140.1 0L400 115.9 400 320c0 8.8-7.2 16-16 16zM192 384l192 0c35.3 0 64-28.7 64-64l0-204.1c0-12.7-5.1-24.9-14.1-33.9L366.1 14.1c-9-9-21.2-14.1-33.9-14.1L192 0c-35.3 0-64 28.7-64 64l0 256c0 35.3 28.7 64 64 64zM64 128c-35.3 0-64 28.7-64 64L0 448c0 35.3 28.7 64 64 64l192 0c35.3 0 64-28.7 64-64l0-32-48 0 0 32c0 8.8-7.2 16-16 16L64 464c-8.8 0-16-7.2-16-16l0-256c0-8.8 7.2-16 16-16l32 0 0-48-32 0z"
+              />
+            </svg>
+          </button>
+        </div>
       </header>
       <div class="display" aria-label="디스플레이 화면">
         <div class="formula"></div>
         <div class="result">0</div>
       </div>
       <div class="buttons" aria-label="숫자 및 연산자 버튼">
-        <button class="button function" aria-label="초기화">C</button>
+        <button class="button function reset" aria-label="초기화">C</button>
         <button class="button function" aria-label="양수/음수 변경">±</button>
         <button class="button function" aria-label="백분율">%</button>
         <button class="button operator" aria-label="나누기">/</button>
@@ -44,7 +82,7 @@
         <button class="button operator" aria-label="더하기">+</button>
         <button class="button number zero">0</button>
         <button class="button operator" aria-label="소수점">.</button>
-        <button class="button operator" aria-label="결과">=</button>
+        <button class="button operator equal" aria-label="결과">=</button>
       </div>
     </div>
     <script src="index.js"></script>

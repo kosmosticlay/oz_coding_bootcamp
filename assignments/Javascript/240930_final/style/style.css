@@ -1,0 +1,203 @@
+/* font */
+@font-face {
+  font-family: "digital-7";
+  src: url("./font/digital-7.mono.ttf") format("truetype");
+}
+
+/* 모든 요소의 기본 여백 제거 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* HTML과 Body의 기본 설정 */
+html,
+body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #444444;
+}
+
+h1 {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.calculator-container {
+  position: relative;
+  width: 280px;
+  height: 500px;
+  padding: 20px 25px;
+  border-radius: 20px;
+  background-color: rgb(56, 56, 56);
+  box-shadow: 25px 25px 35px rgba(0, 0, 0, 0.55),
+    10px 10px 10px rgba(0, 0, 0, 0.45), inset -5px -5px 15px rgba(0, 0, 0, 0.25),
+    inset 5px 5px 15px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.header {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+/* 상단 헤더 - 창 제어 버튼 */
+.window-controls-list {
+  display: flex;
+  gap: 5px;
+}
+
+.window-controls-list:hover span {
+  display: inline-block;
+  font-size: 0.5rem;
+  font-weight: bold;
+}
+
+.window-controls {
+  width: 10px;
+  height: 10px;
+  margin: 0 2px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.window-controls:nth-child(1) {
+  background-color: #ff4d00;
+}
+.window-controls:nth-child(2) {
+  background-color: #ffc400;
+}
+.window-controls:nth-child(3) {
+  background-color: #00c600;
+}
+
+/* 상단 헤더 - 특수 버튼 */
+
+.header__buttons-list {
+  display: flex;
+  gap: 10px;
+}
+.header__button {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  background: linear-gradient(180deg, #2f2f2f, #3f3f3f);
+  box-shadow: inset -8px 0 8px rgba(0, 0, 0, 0.15),
+    inset 0 -8px 8px rgba(0, 0, 0, 0.25), 0 0 0 2px rgba(0, 0, 0, 0.75),
+    10px 20px 25px rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+  position: relative;
+}
+
+/* 계산기 화면과 버튼 컨테이너 */
+.display,
+.buttons {
+  width: 100%;
+}
+
+/* 계산기 화면 */
+.display {
+  height: 20%;
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  border-radius: 10px;
+  background-color: #a7af7c;
+  display: flex;
+  flex-direction: column;
+  box-shadow: inset -8px 0 8px rgba(0, 0, 0, 0.15),
+    inset 0 -8px 8px rgba(0, 0, 0, 0.3), 0 0 0 2px rgba(0, 0, 0, 0.15),
+    10px 20px 25px rgba(0, 0, 0, 0.4);
+  font-family: "digital-7";
+}
+
+.formula {
+  width: 100%;
+  height: 20px;
+  font-size: 1.3rem;
+  color: rgb(99, 99, 99);
+  text-align: right;
+}
+
+.result {
+  flex: 1;
+  font-size: 2.5rem;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+/* 계산기 버튼 */
+.buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.button {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  background: linear-gradient(180deg, #2f2f2f, #3f3f3f);
+  box-shadow: inset -8px 0 8px rgba(0, 0, 0, 0.15),
+    inset 0 -8px 8px rgba(0, 0, 0, 0.25), 0 0 0 2px rgba(0, 0, 0, 0.75),
+    10px 20px 25px rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  position: relative;
+}
+
+.button:hover {
+  filter: brightness(1.5);
+}
+
+.button:active {
+  filter: brightness(1.5);
+}
+
+.zero {
+  width: 110px;
+  height: 50px;
+}
+
+.reset {
+  background: linear-gradient(180deg, #ff0606, #ff0606);
+}
+.reset:hover {
+  filter: brightness(1.8);
+}
+
+.equal {
+  background: linear-gradient(180deg, #00a6ff, #00a6ff);
+}
+
+/* 공통 */
+.hidden {
+  display: none;
+}
