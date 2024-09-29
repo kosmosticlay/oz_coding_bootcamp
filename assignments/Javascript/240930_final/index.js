@@ -1,4 +1,5 @@
 const $buttons = document.querySelectorAll(".button");
+const $restoreBtn = document.querySelector(".restore");
 const $copyBtn = document.querySelector(".copy");
 const $display = document.querySelector(".display");
 const $formula = $display.querySelector(".formula");
@@ -9,6 +10,10 @@ let secondOperand = null;
 let operator;
 let prevResult = null;
 let isOperatorActive = false; // 연산자 클릭 여부
+let prevOperation = {
+  formula: "",
+  result: "",
+};
 
 /* 함수 */
 function calculate(first, second, operator) {
@@ -70,6 +75,16 @@ async function copyResult() {
   }
 }
 
+function restoreResult() {
+  if (prevOperation.result === "") return;
+  $formula.textContent = prevOperation.formula;
+  $result.textContent = prevOperation.result;
+  firstOperand = prevOperation.result;
+  secondOperand = null;
+  operator = null;
+  isOperatorActive = true;
+}
+
 /* 핸들러 */
 function handleOperate($button) {
   // 소수점 버튼 클릭시
@@ -89,6 +104,10 @@ function handleOperate($button) {
       displayFormula($button);
       prevResult = calculate(firstOperand, secondOperand, operator);
       displayResult();
+      prevOperation = {
+        formula: $formula.textContent,
+        result: $result.textContent,
+      };
       operator = null;
       isOperatorActive = true;
       firstOperand = prevResult;
@@ -159,6 +178,7 @@ function handleNumber($button) {
 }
 
 $copyBtn.addEventListener("click", copyResult);
+$restoreBtn.addEventListener("click", restoreResult);
 
 $buttons.forEach(($button) => {
   $button.addEventListener("click", (event) => {
