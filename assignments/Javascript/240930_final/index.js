@@ -7,8 +7,47 @@ let firstOperand = null;
 let secondOperand = null;
 let operator;
 let prevResult = null;
-let isOperatorActive = false;
+let isOperatorActive = false; // 연산자 클릭 여부
 
+/* 함수 */
+function calculate(first, second, operator) {
+  let result;
+
+  switch (operator) {
+    case "*":
+      result = Number(first) * Number(second);
+      break;
+    case "+":
+      result = Number(first) + Number(second);
+      break;
+    case "-":
+      result = Number(first) - Number(second);
+      break;
+    case "/":
+      result = Number(first) / Number(second);
+      break;
+  }
+
+  return parseFloat(result.toFixed(10));
+}
+
+function displayResult() {
+  $result.textContent = prevResult;
+  firstOperand = prevResult ? prevResult : firstOperand;
+  $result.textContent = firstOperand;
+  secondOperand = null;
+  // console.log(firstOperand, operator, secondOperand);
+}
+
+function displayFormula($button) {
+  if ($button.textContent === "=") {
+    $formula.textContent = `${firstOperand} ${operator} ${secondOperand} =`;
+  } else {
+    $formula.textContent = `${firstOperand} ${operator}`;
+  }
+}
+
+/* 핸들러 */
 function handleOperate($button) {
   // 소수점 버튼 클릭시
   if ($button.textContent === ".") {
@@ -92,43 +131,6 @@ function handleNumber($button) {
     } else {
       $result.textContent += $button.textContent;
     }
-  }
-}
-
-function calculate(first, second, operator) {
-  let result;
-
-  switch (operator) {
-    case "*":
-      result = Number(first) * Number(second);
-      break;
-    case "+":
-      result = Number(first) + Number(second);
-      break;
-    case "-":
-      result = Number(first) - Number(second);
-      break;
-    case "/":
-      result = Number(first) / Number(second);
-      break;
-  }
-
-  return parseFloat(result.toFixed(10));
-}
-
-function displayResult() {
-  $result.textContent = prevResult;
-  firstOperand = prevResult ? prevResult : firstOperand;
-  $result.textContent = firstOperand;
-  secondOperand = null;
-  // console.log(firstOperand, operator, secondOperand);
-}
-
-function displayFormula($button) {
-  if ($button.textContent === "=") {
-    $formula.textContent = `${firstOperand} ${operator} ${secondOperand} =`;
-  } else {
-    $formula.textContent = `${firstOperand} ${operator}`;
   }
 }
 
