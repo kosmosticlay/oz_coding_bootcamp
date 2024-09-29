@@ -5,6 +5,9 @@ const $display = document.querySelector(".display");
 const $formula = $display.querySelector(".formula");
 const $result = $display.querySelector(".result");
 
+const $logList = document.querySelector(".log-list");
+const $logResetBtn = document.querySelector(".log-reset-btn");
+
 let firstOperand = null;
 let secondOperand = null;
 let operator;
@@ -14,6 +17,8 @@ let prevOperation = {
   formula: "",
   result: "",
 };
+let log = [];
+let logIndex = 1;
 
 /* 함수 */
 function calculate(first, second, operator) {
@@ -85,6 +90,29 @@ function restoreResult() {
   isOperatorActive = true;
 }
 
+function createElement(tagName, className, textContent) {
+  const $element = document.createElement(tagName);
+  $element.className = className;
+  $element.textContent = textContent;
+  return $element;
+}
+
+function displayLog() {
+  const $logItem = createElement("li", "log-item", "");
+  const $logItemIndex = createElement(
+    "span",
+    "log-item__index",
+    `Log#${logIndex++}`
+  );
+  const $logItemContent = createElement(
+    "span",
+    "log-item__content",
+    `${prevOperation.formula} ${prevOperation.result}`
+  );
+  $logItem.append($logItemIndex, $logItemContent);
+  $logList.append($logItem);
+}
+
 /* 핸들러 */
 function handleOperate($button) {
   // 소수점 버튼 클릭시
@@ -111,6 +139,7 @@ function handleOperate($button) {
       operator = null;
       isOperatorActive = true;
       firstOperand = prevResult;
+      displayLog();
       console.log(prevOperation);
     }
     // 산술연산자 클릭시
@@ -193,4 +222,9 @@ $buttons.forEach(($button) => {
       handleFunction($button);
     }
   });
+});
+
+$logResetBtn.addEventListener("click", () => {
+  $logList.innerHTML = "";
+  logIndex = 1;
 });
