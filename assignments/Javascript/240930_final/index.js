@@ -122,13 +122,9 @@ $buttons.forEach(($button) => {
 
     if ($button.classList.contains("number")) {
       handleNumber($button);
-    }
-
-    if ($button.classList.contains("operator")) {
+    } else if ($button.classList.contains("operator")) {
       handleOperate(buttonEl);
-    }
-
-    if ($button.classList.contains("function")) {
+    } else if ($button.classList.contains("function")) {
       handleFunction($button);
     }
   });
