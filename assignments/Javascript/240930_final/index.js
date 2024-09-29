@@ -1,4 +1,5 @@
 const $buttons = document.querySelectorAll(".button");
+const $copyBtn = document.querySelector(".copy");
 const $display = document.querySelector(".display");
 const $formula = $display.querySelector(".formula");
 const $result = $display.querySelector(".result");
@@ -44,6 +45,15 @@ function displayFormula($button) {
     $formula.textContent = `${firstOperand} ${operator} ${secondOperand} =`;
   } else {
     $formula.textContent = `${firstOperand} ${operator}`;
+  }
+}
+
+async function copyResult() {
+  try {
+    await navigator.clipboard.writeText($result.textContent);
+    alert("디스플레이 화면의 숫자가 클립보드에 복사되었습니다.");
+  } catch (error) {
+    console.log(error);
   }
 }
 
@@ -133,6 +143,8 @@ function handleNumber($button) {
     }
   }
 }
+
+$copyBtn.addEventListener("click", copyResult);
 
 $buttons.forEach(($button) => {
   $button.addEventListener("click", (event) => {
