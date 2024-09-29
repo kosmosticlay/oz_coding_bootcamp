@@ -32,9 +32,22 @@ function calculate(first, second, operator) {
   return parseFloat(result.toFixed(10));
 }
 
+function trimNumbers(number) {
+  if (number > 9999999999) return "Too Big";
+
+  let numStr = String(number);
+
+  if (numStr.length > 11) {
+    numStr = numStr.slice(0, 11);
+  }
+
+  return parseFloat(numStr);
+}
+
 function displayResult() {
-  $result.textContent = prevResult;
+  $result.textContent = trimNumbers(prevResult);
   firstOperand = prevResult ? prevResult : firstOperand;
+  firstOperand = trimNumbers(firstOperand);
   $result.textContent = firstOperand;
   secondOperand = null;
   // console.log(firstOperand, operator, secondOperand);
@@ -79,6 +92,7 @@ function handleOperate($button) {
       operator = null;
       isOperatorActive = true;
       firstOperand = prevResult;
+      console.log(prevOperation);
     }
     // 산술연산자 클릭시
     else {

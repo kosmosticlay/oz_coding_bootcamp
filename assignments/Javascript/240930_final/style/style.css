@@ -136,6 +136,11 @@ h1 {
   font-size: 1.3rem;
   color: rgb(99, 99, 99);
   text-align: right;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: inline-block;
+  direction: ltr; /* 기본 왼쪽에서 오른쪽으로 표시되도록 설정 */
 }
 
 .result {
