@@ -1,5 +1,6 @@
 const $buttons = document.querySelectorAll(".button");
 const $display = document.querySelector(".display");
+const $formula = $display.querySelector(".formula");
 const $result = $display.querySelector(".result");
 
 let firstOperand = null;
@@ -23,6 +24,7 @@ function handleOperate($button) {
     if ($button.textContent === "=") {
       if (operator === null || firstOperand === null) return;
       secondOperand = $result.textContent;
+      displayFormula($button);
       prevResult = handleCalculate(firstOperand, secondOperand, operator);
       displayResult();
       operator = null;
@@ -40,6 +42,7 @@ function handleOperate($button) {
         firstOperand = prevResult;
       }
       operator = $button.textContent;
+      displayFormula($button);
       isOperatorActive = true;
       console.log(`First Operand: ${firstOperand}`);
       console.log(`Operator: ${operator}`);
@@ -111,6 +114,14 @@ function displayResult() {
   $result.textContent = firstOperand;
   secondOperand = null;
   // console.log(firstOperand, operator, secondOperand);
+}
+
+function displayFormula($button) {
+  if ($button.textContent === "=") {
+    $formula.textContent = `${firstOperand} ${operator} ${secondOperand} =`;
+  } else {
+    $formula.textContent = `${firstOperand} ${operator}`;
+  }
 }
 
 $buttons.forEach(($button) => {
