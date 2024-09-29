@@ -62,6 +62,7 @@ function handleFunction($button) {
   else if ($button.textContent === "%") {
     $result.textContent = String(Number($result.textContent * 0.01));
     // console.log(firstOperand, operator, secondOperand);
+    firstOperand = $result.textContent;
     isOperatorActive = true;
   }
   // ± 기능 추가하기
