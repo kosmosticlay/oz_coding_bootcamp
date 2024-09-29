@@ -56,6 +56,7 @@ function handleFunction($button) {
     firstOperand = null;
     secondOperand = null;
     operator = null;
+    $formula.textContent = "";
     $result.textContent = "0";
   }
   // % 기능 추가하기
@@ -67,7 +68,13 @@ function handleFunction($button) {
   }
   // ± 기능 추가하기
   else if ($button.textContent === "±") {
-    $result.textContent = String(Number($result.textContent * -1));
+    if (isOperatorActive) {
+      $result.textContent = String(Number($result.textContent) * -1);
+      firstOperand = $result.textContent;
+    } else {
+      $result.textContent = String(Number($result.textContent) * -1);
+      secondOperand = $result.textContent;
+    }
   }
 }
 
