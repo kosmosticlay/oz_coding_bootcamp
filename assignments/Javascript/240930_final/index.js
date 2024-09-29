@@ -25,7 +25,7 @@ function handleOperate($button) {
       if (operator === null || firstOperand === null) return;
       secondOperand = $result.textContent;
       displayFormula($button);
-      prevResult = handleCalculate(firstOperand, secondOperand, operator);
+      prevResult = calculate(firstOperand, secondOperand, operator);
       displayResult();
       operator = null;
       isOperatorActive = true;
@@ -37,7 +37,7 @@ function handleOperate($button) {
         firstOperand = $result.textContent;
       } else if (!isOperatorActive) {
         secondOperand = $result.textContent;
-        prevResult = handleCalculate(firstOperand, secondOperand, operator);
+        prevResult = calculate(firstOperand, secondOperand, operator);
         displayResult();
         firstOperand = prevResult;
       }
@@ -88,7 +88,7 @@ function handleNumber($button) {
   }
 }
 
-function handleCalculate(first, second, operator) {
+function calculate(first, second, operator) {
   let result;
 
   switch (operator) {
@@ -127,15 +127,13 @@ function displayFormula($button) {
 
 $buttons.forEach(($button) => {
   $button.addEventListener("click", (event) => {
-    const buttonEl = event.target;
-
     // (화면 기준) 글자 23개 이상이면 이후 입력 무시하기
     if ($result.textContent.length >= 20) return;
 
     if ($button.classList.contains("number")) {
       handleNumber($button);
     } else if ($button.classList.contains("operator")) {
-      handleOperate(buttonEl);
+      handleOperate($button);
     } else if ($button.classList.contains("function")) {
       handleFunction($button);
     }
