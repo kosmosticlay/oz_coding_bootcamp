@@ -61,6 +61,10 @@ function handleFunction($button) {
     // console.log(firstOperand, operator, secondOperand);
     isOperatorActive = true;
   }
+  // ± 기능 추가하기
+  else if ($button.textContent === "±") {
+    $result.textContent = String(Number($result.textContent * -1));
+  }
 }
 
 function handleNumber($button) {
