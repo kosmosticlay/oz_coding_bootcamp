@@ -211,9 +211,6 @@ $restoreBtn.addEventListener("click", restoreResult);
 
 $buttons.forEach(($button) => {
   $button.addEventListener("click", (event) => {
-    // (화면 기준) 글자 23개 이상이면 이후 입력 무시하기
-    if ($result.textContent.length >= 20) return;
-
     if ($button.classList.contains("number")) {
       handleNumber($button);
     } else if ($button.classList.contains("operator")) {
