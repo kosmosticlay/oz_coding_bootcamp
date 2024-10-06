@@ -4,7 +4,6 @@ const $copyBtn = document.querySelector(".copy");
 const $display = document.querySelector(".display");
 const $formula = $display.querySelector(".formula");
 const $result = $display.querySelector(".result");
-
 const $logList = document.querySelector(".log-list");
 const $logResetBtn = document.querySelector(".log-reset-btn");
 
@@ -47,6 +46,7 @@ function adjustFontSize() {
   if (textLength <= 11) {
     $result.style.fontSize = "2.5rem";
   } else {
+    /* 디스플레이에 11글자 이상 입력시 동적으로 폰트 사이즈 변경 (최소 1.8rem)*/
     const fontSize = Math.max(2.5 - (textLength - 11) * 0.2, 1.8);
     $result.style.fontSize = `${fontSize}rem`;
   }
@@ -86,13 +86,20 @@ function displayFormula() {
 }
 
 function displayResult() {
-  if (Math.abs(display.result) < 1e-10) {
+  if (
+    display.result === "" ||
+    display.result === undefined ||
+    display.result === 0
+  ) {
+    $result.textContent = "0";
+  } else if (Math.abs(display.result) < 1e-10) {
     $result.textContent = Number(display.result).toExponential();
   } else {
     $result.textContent = display.result;
   }
 }
 
+/* Log Functions */
 function createLogEl(tagName, className, textContent) {
   const $element = document.createElement(tagName);
   $element.className = className;
@@ -132,10 +139,7 @@ function displayLog() {
     $logDeleteBtn.appendChild(deleteIconSVG);
 
     $logDeleteBtn.addEventListener("click", () => {
-      // 로그 아이템에 삭제 애니메이션 클래스 추가
       $logItem.classList.add("log-item--removing");
-
-      // 애니메이션이 끝난 후 요소 삭제
       $logItem.addEventListener("transitionend", () => {
         $logItem.remove();
       });
@@ -148,7 +152,7 @@ function displayLog() {
     });
 
     $logDeleteBtn.addEventListener("mouseout", () => {
-      $logItem.style.backgroundColor = ""; // 원래 배경색으로 복귀
+      $logItem.style.backgroundColor = "";
       const $logItemIndex = $logItem.querySelector(".log-item__index");
       $logItemIndex.style.backgroundColor = "#383838";
     });
@@ -203,14 +207,8 @@ function handleOperator(button) {
 
   if (operator && secondOperand !== undefined) {
     display.formula = `${firstOperand} ${operator} ${secondOperand} =`;
-    // display.formula = display.formula.replace("= =", "="); // '=' 연속 처리 방지
     displayFormula();
     display.result = calculate(firstOperand, secondOperand, operator);
-
-    if (display.result.toString().length > 16) {
-      display.result = Number(display.result).toExponential(10);
-    }
-
     displayResult();
     adjustFontSize();
     firstOperand = display.result;
@@ -299,16 +297,16 @@ function handleButtons(event) {
   }
 }
 
-/* header buttons */
+/* Header Event Listners : Copy, Restore*/
 $copyBtn.addEventListener("click", handleCopy);
 $restoreBtn.addEventListener("click", handleRestore);
 
-/* calculator buttons */
+/* Calculator Event Listeners : Numbers, Operators, Functions, Decimal point*/
 $buttons.forEach(($button) => {
   $button.addEventListener("click", handleButtons);
 });
 
-/* memo button */
+/* Log Event Listners : Reset */
 $logResetBtn.addEventListener("click", () => {
   $logList.innerHTML = "";
   logIndex = 1;

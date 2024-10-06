@@ -1,10 +1,38 @@
-/* font */
+/* Fonts */
 @font-face {
   font-family: "digital-7";
   src: url("./font/digital-7.mono.ttf") format("truetype");
 }
 
-/* 모든 요소의 기본 여백 제거 */
+/* Variables */
+:root {
+  /* color */
+  --background-color-main: #444444;
+  --background-color-sub: #383838;
+  --color-red: #ff0606;
+  --color-blue: #00a6ff;
+  --color-white: #ffffff;
+  --color-gray-light: #555555;
+
+  /* gradients */
+  --background-gradient: linear-gradient(180deg, #2f2f2f, #3f3f3f);
+
+  /* font */
+  --font-family-main: "digital-7";
+  --font-size-base: 1rem;
+  --font-size-medium: 1.3rem;
+  --font-size-large: 1.5rem;
+  --font-size-display: 2.5rem;
+
+  /* shadows */
+  --box-shadow-container: 25px 25px 35px rgba(0, 0, 0, 0.55),
+    10px 10px 10px rgba(0, 0, 0, 0.45), inset -5px -5px 15px rgba(0, 0, 0, 0.25),
+    inset 5px 5px 15px rgba(0, 0, 0, 0.25);
+  --box-shadow-button: inset -8px 0 8px rgba(0, 0, 0, 0.15),
+    inset 0 -8px 8px rgba(0, 0, 0, 0.3), 0 5px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Reset css */
 * {
   margin: 0;
   padding: 0;
@@ -17,26 +45,24 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #444444;
+  background-color: var(--background-color-main);
   gap: 30px;
 }
 
 h1 {
   text-align: center;
-  font-size: 1.5rem;
+  font-size: var(--font-size-large);
   margin-bottom: 20px;
 }
 
 .calculator-container,
-.memo-container {
+.log-container {
   position: relative;
   height: 500px;
   padding: 20px 25px;
   border-radius: 20px;
-  background-color: #383838;
-  box-shadow: 25px 25px 35px rgba(0, 0, 0, 0.55),
-    10px 10px 10px rgba(0, 0, 0, 0.45), inset -5px -5px 15px rgba(0, 0, 0, 0.25),
-    inset 5px 5px 15px rgba(0, 0, 0, 0.25);
+  background-color: var(--background-color-sub);
+  box-shadow: var(--box-shadow-container);
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -46,7 +72,7 @@ h1 {
   width: 280px;
 }
 
-.memo-container {
+.log-container {
   width: 530px;
 }
 
@@ -59,19 +85,13 @@ h1 {
   margin-bottom: 5px;
 }
 
-/* 상단 헤더 - 창 제어 버튼 */
-.window-controls-list {
+/* Header - window controls */
+.header__controlBtns-list {
   display: flex;
   gap: 5px;
 }
 
-.window-controls-list:hover span {
-  display: inline-block;
-  font-size: 0.5rem;
-  font-weight: bold;
-}
-
-.window-controls {
+.controlBtn {
   width: 10px;
   height: 10px;
   margin: 0 2px;
@@ -83,18 +103,17 @@ h1 {
   align-items: center;
 }
 
-.window-controls:nth-child(1) {
+.controlBtn:nth-child(1) {
   background-color: #ff4d00;
 }
-.window-controls:nth-child(2) {
+.controlBtn:nth-child(2) {
   background-color: #ffc400;
 }
-.window-controls:nth-child(3) {
+.controlBtn:nth-child(3) {
   background-color: #00c600;
 }
 
-/* 상단 헤더 - 특수 버튼 */
-
+/* Header - function buttons */
 .header__funcBtns-list {
   display: flex;
   gap: 10px;
@@ -105,23 +124,22 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
-  font-size: 1rem;
+  color: var(--color-white);
+  font-size: var(--font-size-base);
   cursor: pointer;
-  background: linear-gradient(180deg, #2f2f2f, #3f3f3f);
-  box-shadow: inset -8px 0 8px rgba(0, 0, 0, 0.15),
-    inset 0 -8px 8px rgba(0, 0, 0, 0.25), 0 0 0 2px rgba(0, 0, 0, 0.75);
+  background: var(--background-gradient);
+  box-shadow: var(--box-shadow-button);
   border-radius: 3px;
   position: relative;
 }
 
-/* 계산기 화면과 버튼 컨테이너 */
+/* Calculator */
 .display,
 .buttons {
   width: 100%;
 }
 
-/* 계산기 화면 */
+/* Calculator - display */
 .display {
   height: 20%;
   margin-bottom: 10px;
@@ -130,16 +148,15 @@ h1 {
   display: flex;
   flex-direction: column;
   background-color: #a7af7c;
-  box-shadow: inset -8px 0 8px rgba(0, 0, 0, 0.15),
-    inset 0 -8px 8px rgba(0, 0, 0, 0.3), 0 5px 20px rgba(0, 0, 0, 0.5);
-  font-family: "digital-7";
+  box-shadow: var(--box-shadow-button);
+  font-family: var(--font-family-main);
 }
 
 .formula {
   width: 100%;
   height: 20px;
-  font-size: 1.3rem;
-  color: #555555;
+  font-size: var(--font-size-medium);
+  color: var(--color-gray-light);
   text-align: right;
   overflow: hidden;
   white-space: nowrap;
@@ -150,7 +167,7 @@ h1 {
 
 .result {
   flex: 1;
-  font-size: 2.5rem;
+  font-size: var(--font-size-display);
   color: black;
   display: flex;
   align-items: center;
@@ -158,7 +175,7 @@ h1 {
   overflow: hidden;
 }
 
-/* 계산기 버튼 */
+/* Calculator - buttons */
 .buttons {
   display: flex;
   justify-content: center;
@@ -172,12 +189,11 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
-  font-size: 1.2rem;
+  color: var(--color-white);
+  font-size: var(--font-size-base);
   cursor: pointer;
-  background: linear-gradient(180deg, #2f2f2f, #3f3f3f);
-  box-shadow: inset -8px 0 8px rgba(0, 0, 0, 0.15),
-    inset 0 -8px 8px rgba(0, 0, 0, 0.25), 0 0 0 2px rgba(0, 0, 0, 0.75);
+  background: var(--background-gradient);
+  box-shadow: var(--box-shadow-button);
   border-radius: 5px;
   position: relative;
 }
@@ -188,30 +204,30 @@ h1 {
 }
 
 .reset {
-  background: linear-gradient(180deg, #ff0606, #ff0606);
+  background: linear-gradient(180deg, var(--color-red), var(--color-red));
   box-shadow: inset -8px 0 8px rgba(255, 6, 6, 0.15),
     inset 0 -8px 8px rgba(255, 6, 6, 0.25), 0 0 0 2px rgba(0, 0, 0, 0.75);
 }
 
 .equal {
-  background: linear-gradient(180deg, rgb(0, 166, 255), #00a6ff);
+  background: linear-gradient(180deg, var(--color-blue), var(--color-blue));
   box-shadow: inset -8px 0 8px rgba(0, 166, 255, 0.15),
     inset 0 -8px 8px rgba(0, 166, 255, 0.25), 0 0 0 2px rgba(0, 0, 0, 0.75);
 }
 
-/* 메모장 */
-.memo-container {
+/* Log */
+.log-container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.memo-title {
+.log-title {
   width: 100%;
   text-align: center;
   padding-bottom: 15px;
-  border-bottom: 1px solid #7f7d7d;
-  color: white;
+  border-bottom: 1px solid var(--color-gray-light);
+  color: var(--color-white);
 }
 
 .log-list {
@@ -222,10 +238,9 @@ h1 {
   border-radius: 10px;
   padding: 20px;
   background-color: #a7af7c;
-  box-shadow: inset -8px 0 8px rgba(0, 0, 0, 0.15),
-    inset 0 -8px 8px rgba(0, 0, 0, 0.3), 0 5px 20px rgba(0, 0, 0, 0.5);
-  font-family: "digital-7";
-  font-size: 1.5rem;
+  box-shadow: var(--box-shadow-button);
+  font-family: var(--font-family-main);
+  font-size: var(--font-size-large);
 }
 
 .log-item {
@@ -248,8 +263,8 @@ h1 {
   height: 26px;
   margin-right: 10px;
   padding-left: 5px;
-  background-color: #383838;
-  color: white;
+  background-color: var(--background-color-sub);
+  color: var(--color-white);
 }
 
 .log-item__content {
@@ -266,22 +281,21 @@ h1 {
 }
 
 .log-item__deleteBtn svg {
-  fill: #383838;
+  fill: var(--background-color-sub);
 }
 
 .log-reset-btn {
   width: 150px;
   height: 40px;
-  color: white;
-  font-size: 1rem;
+  color: var(--color-white);
+  font-size: var(--font-size-base);
   cursor: pointer;
-  background: linear-gradient(180deg, #2f2f2f, #3f3f3f);
-  box-shadow: inset -8px 0 8px rgba(0, 0, 0, 0.15),
-    inset 0 -8px 8px rgba(0, 0, 0, 0.25), 0 0 0 2px rgba(0, 0, 0, 0.75);
+  background: var(--background-gradient);
+  box-shadow: var(--box-shadow-button);
   border-radius: 5px;
 }
 
-/* 공통 */
+/* Hover */
 .header__funcBtn:hover,
 .button:hover,
 .log-reset-btn:hover {
