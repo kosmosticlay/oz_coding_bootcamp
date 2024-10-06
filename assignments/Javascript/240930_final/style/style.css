@@ -4,8 +4,6 @@
   src: url("./font/digital-7.mono.ttf") format("truetype");
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Guides:wght@400..700&display=swap");
-
 /* 모든 요소의 기본 여백 제거 */
 * {
   margin: 0;
@@ -13,7 +11,6 @@
   box-sizing: border-box;
 }
 
-/* HTML과 Body의 기본 설정 */
 html,
 body {
   height: 100%;
@@ -33,7 +30,6 @@ h1 {
 .calculator-container,
 .memo-container {
   position: relative;
-  width: 280px;
   height: 500px;
   padding: 20px 25px;
   border-radius: 20px;
@@ -44,6 +40,14 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.calculator-container {
+  width: 280px;
+}
+
+.memo-container {
+  width: 530px;
 }
 
 .header {
@@ -91,11 +95,11 @@ h1 {
 
 /* 상단 헤더 - 특수 버튼 */
 
-.header__buttons-list {
+.header__funcBtns-list {
   display: flex;
   gap: 10px;
 }
-.header__button {
+.header__funcBtn {
   width: 30px;
   height: 30px;
   display: flex;
@@ -106,9 +110,8 @@ h1 {
   cursor: pointer;
   background: linear-gradient(180deg, #2f2f2f, #3f3f3f);
   box-shadow: inset -8px 0 8px rgba(0, 0, 0, 0.15),
-    inset 0 -8px 8px rgba(0, 0, 0, 0.25), 0 0 0 2px rgba(0, 0, 0, 0.75),
-    10px 20px 25px rgba(0, 0, 0, 0.4);
-  border-radius: 5px;
+    inset 0 -8px 8px rgba(0, 0, 0, 0.25), 0 0 0 2px rgba(0, 0, 0, 0.75);
+  border-radius: 3px;
   position: relative;
 }
 
@@ -124,12 +127,11 @@ h1 {
   margin-bottom: 10px;
   padding: 5px 10px;
   border-radius: 10px;
-  background-color: #a7af7c;
   display: flex;
   flex-direction: column;
+  background-color: #a7af7c;
   box-shadow: inset -8px 0 8px rgba(0, 0, 0, 0.15),
-    inset 0 -8px 8px rgba(0, 0, 0, 0.3), 0 0 0 2px rgba(0, 0, 0, 0.15),
-    10px 20px 25px rgba(0, 0, 0, 0.4);
+    inset 0 -8px 8px rgba(0, 0, 0, 0.3), 0 5px 20px rgba(0, 0, 0, 0.5);
   font-family: "digital-7";
 }
 
@@ -137,7 +139,7 @@ h1 {
   width: 100%;
   height: 20px;
   font-size: 1.3rem;
-  color: rgb(99, 99, 99);
+  color: #555555;
   text-align: right;
   overflow: hidden;
   white-space: nowrap;
@@ -171,22 +173,13 @@ h1 {
   justify-content: center;
   align-items: center;
   color: white;
-  font-size: 1rem;
+  font-size: 1.2rem;
   cursor: pointer;
   background: linear-gradient(180deg, #2f2f2f, #3f3f3f);
   box-shadow: inset -8px 0 8px rgba(0, 0, 0, 0.15),
-    inset 0 -8px 8px rgba(0, 0, 0, 0.25), 0 0 0 2px rgba(0, 0, 0, 0.75),
-    10px 20px 25px rgba(0, 0, 0, 0.4);
-  border-radius: 10px;
+    inset 0 -8px 8px rgba(0, 0, 0, 0.25), 0 0 0 2px rgba(0, 0, 0, 0.75);
+  border-radius: 5px;
   position: relative;
-}
-
-.button:hover {
-  filter: brightness(1.5);
-}
-
-.button:active {
-  filter: brightness(1.5);
 }
 
 .zero {
@@ -196,13 +189,14 @@ h1 {
 
 .reset {
   background: linear-gradient(180deg, #ff0606, #ff0606);
-}
-.reset:hover {
-  filter: brightness(1.8);
+  box-shadow: inset -8px 0 8px rgba(255, 6, 6, 0.15),
+    inset 0 -8px 8px rgba(255, 6, 6, 0.25), 0 0 0 2px rgba(0, 0, 0, 0.75);
 }
 
 .equal {
-  background: linear-gradient(180deg, #00a6ff, #00a6ff);
+  background: linear-gradient(180deg, rgb(0, 166, 255), #00a6ff);
+  box-shadow: inset -8px 0 8px rgba(0, 166, 255, 0.15),
+    inset 0 -8px 8px rgba(0, 166, 255, 0.25), 0 0 0 2px rgba(0, 0, 0, 0.75);
 }
 
 /* 메모장 */
@@ -210,14 +204,14 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: white;
 }
 
 .memo-title {
   width: 100%;
   text-align: center;
   padding-bottom: 15px;
-  border-bottom: 1px solid rgb(127, 125, 125);
+  border-bottom: 1px solid #7f7d7d;
+  color: white;
 }
 
 .log-list {
@@ -225,42 +219,71 @@ h1 {
   height: 330px;
   margin: 10px 0;
   overflow-y: scroll;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #a7af7c;
+  box-shadow: inset -8px 0 8px rgba(0, 0, 0, 0.15),
+    inset 0 -8px 8px rgba(0, 0, 0, 0.3), 0 5px 20px rgba(0, 0, 0, 0.5);
+  font-family: "digital-7";
+  font-size: 1.5rem;
 }
 
 .log-item {
   width: 100%;
   list-style: none;
   margin-bottom: 15px;
+  padding-right: 15px;
   display: flex;
+  justify-content: space-between;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
 
-  font-family: "Edu AU VIC WA NT Guides", cursive;
+.log-item--removing {
+  transform: translateX(100%);
+  opacity: 0;
 }
 
 .log-item__index {
-  width: 70px;
+  width: 85px;
+  height: 26px;
+  margin-right: 10px;
+  padding-left: 5px;
+  background-color: #383838;
+  color: white;
 }
 
 .log-item__content {
-  width: 155px;
+  width: 300px;
   border-radius: 5px;
   text-wrap: wrap;
   word-wrap: break-word;
 }
 
+.log-item__deleteBtn {
+  width: 15px;
+  cursor: pointer;
+  padding-top: 2px;
+}
+
+.log-item__deleteBtn svg {
+  fill: #383838;
+}
+
 .log-reset-btn {
-  width: 100px;
+  width: 150px;
   height: 40px;
   color: white;
   font-size: 1rem;
   cursor: pointer;
   background: linear-gradient(180deg, #2f2f2f, #3f3f3f);
   box-shadow: inset -8px 0 8px rgba(0, 0, 0, 0.15),
-    inset 0 -8px 8px rgba(0, 0, 0, 0.25), 0 0 0 2px rgba(0, 0, 0, 0.75),
-    10px 20px 25px rgba(0, 0, 0, 0.4);
-  border-radius: 10px;
+    inset 0 -8px 8px rgba(0, 0, 0, 0.25), 0 0 0 2px rgba(0, 0, 0, 0.75);
+  border-radius: 5px;
 }
 
 /* 공통 */
-.hidden {
-  display: none;
+.header__funcBtn:hover,
+.button:hover,
+.log-reset-btn:hover {
+  filter: brightness(1.5);
 }
