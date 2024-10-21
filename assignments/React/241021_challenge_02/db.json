@@ -1,8 +1,18 @@
 {
-  "favorites": [],
   "todos": [
-    { "id": 1, "todo": "무엇이든 하자", "isDone": false },
-    { "id": 2, "todo": "무엇이든 하자", "isDone": false },
-    { "id": 3, "todo": "무엇이든 하자", "isDone": false }
+    {
+      "id": "1ac0baf2-3268-461b-b73e-64b57be31709",
+      "todo": "두번째 테스트 데이터",
+      "tags": ["333", "4444"],
+      "isDone": false,
+      "isFavorite": false
+    },
+    {
+      "id": "f0452f0b-1216-4e62-8ee9-3f4de4a75ec9",
+      "todo": "수정된 데이터",
+      "tags": ["55555"],
+      "isDone": false,
+      "isFavorite": false
+    }
   ]
 }

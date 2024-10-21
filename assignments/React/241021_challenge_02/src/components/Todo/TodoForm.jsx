@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { MagnifyingGlassIcon, PlusIcon } from "@heroicons/react/24/outline";
 import Tags from "./Tags";
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+import { addTodo } from "../utils/jsonAPI";
 
 const Wrapper = styled.section`
   min-width: 300px;
@@ -72,13 +74,29 @@ const InputContainer = styled.div`
   }
 `;
 
-export default function TodoForm() {
+export default function TodoForm({ setTodos, todos }) {
   const [isSearching, setIsSearching] = useState(false);
   const [tags, setTags] = useState([]);
+  const [newTodo, setNewTodo] = useState("");
 
-  const handleAdd = (event) => {
+  const handleAdd = async (event) => {
     event.preventDefault();
-    console.log("handleAdd");
+
+    const todoItem = {
+      id: uuidv4(),
+      todo: newTodo,
+      tags: tags,
+      isDone: false,
+      isFavorite: false,
+    };
+
+    try {
+      await addTodo(todoItem);
+      setTodos([todoItem, ...todos]);
+      setNewTodo("");
+    } catch (error) {
+      console.error("Error adding todo:", error);
+    }
   };
 
   const handleSearch = (event) => {
@@ -93,7 +111,12 @@ export default function TodoForm() {
         <AddForm onSubmit={handleAdd}>
           <InputContainer>
             <PlusIcon />
-            <input type="text" placeholder="새로운 할 일을 입력" />
+            <input
+              value={newTodo}
+              onChange={(e) => setNewTodo(e.target.value)}
+              type="text"
+              placeholder="새로운 할 일을 입력"
+            />
           </InputContainer>
           <button>입력</button>
         </AddForm>
