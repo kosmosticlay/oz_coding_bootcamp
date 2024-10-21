@@ -1,5 +1,6 @@
+/* Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&display=swap");
 /* Reset CSS */
-
 html,
 body,
 div,
@@ -125,4 +126,28 @@ q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+svg {
+  width: 25px;
+  cursor: pointer;
+}
+
+h1 {
+  font-size: 1.6rem;
+  font-weight: bold;
+  font-family: "Oxanium", sans-serif;
+  text-align: center;
+}
+// <uniquifier>: Use a unique and descriptive class name
+// <weight>: Use a value from 200 to 800
+
+.oxanium {
+  font-family: "Oxanium", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
