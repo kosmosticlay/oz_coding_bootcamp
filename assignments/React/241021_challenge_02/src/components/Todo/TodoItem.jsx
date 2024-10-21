@@ -13,6 +13,8 @@ const Container = styled.li`
 const ItemContent = styled.div`
   width: 55%;
   background-color: antiquewhite;
+  display: flex;
+  gap: 10px;
 `;
 
 const Tags = styled.ul`
@@ -30,7 +32,7 @@ export default function TodoItem() {
     <Container>
       <ItemContent>
         <input type="checkbox" />
-        <content>오늘 해야 할일은 무엇일까욘</content>
+        <p>오늘 해야 할일은 무엇일까욘</p>
       </ItemContent>
       <Tags>heelo </Tags>
       <Controls>

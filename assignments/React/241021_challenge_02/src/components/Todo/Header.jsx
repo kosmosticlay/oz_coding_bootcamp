@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { useDayString } from "../../hooks/useDayString";
+import { useTimeString } from "../../hooks/useTimeString";
 
 const Wrapper = styled.header`
   width: 100%;
@@ -21,10 +23,13 @@ const CurrentTime = styled.p`
 `;
 
 export default function Header() {
+  const dayString = useDayString();
+  const timeString = useTimeString();
+
   return (
     <Wrapper>
       <Greeting>Hello, stranger!👋</Greeting>
-      <CurrentTime>Today, Wed 21 Oct 2024</CurrentTime>
+      <CurrentTime>{`${dayString} / ${timeString}`}</CurrentTime>
     </Wrapper>
   );
 }
