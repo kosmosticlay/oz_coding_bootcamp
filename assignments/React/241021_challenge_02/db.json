@@ -1,0 +1,8 @@
+{
+  "favorites": [],
+  "todos": [
+    { "id": 1, "todo": "무엇이든 하자", "isDone": false },
+    { "id": 2, "todo": "무엇이든 하자", "isDone": false },
+    { "id": 3, "todo": "무엇이든 하자", "isDone": false }
+  ]
+}

@@ -74,6 +74,7 @@ const InputContainer = styled.div`
 
 export default function TodoForm() {
   const [isSearching, setIsSearching] = useState(false);
+  const [tags, setTags] = useState([]);
 
   const handleAdd = (event) => {
     event.preventDefault();
@@ -87,7 +88,7 @@ export default function TodoForm() {
   };
   return (
     <Wrapper>
-      <Tags />
+      <Tags tags={tags} setTags={setTags} />
       <FormContainer>
         <AddForm onSubmit={handleAdd}>
           <InputContainer>
