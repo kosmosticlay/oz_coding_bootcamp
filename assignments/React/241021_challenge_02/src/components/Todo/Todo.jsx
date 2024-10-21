@@ -5,10 +5,11 @@ import TodoForm from "./TodoForm";
 import TodoContent from "./TodoContent";
 import { useState } from "react";
 import { useEffect } from "react";
-import { getTodos } from "../utils/jsonAPI";
+import { getTodos } from "../../utils/jsonAPI";
 
 const Wrapper = styled.div`
   min-width: 360px;
+  min-height: 100vh;
   height: max-content;
   flex-grow: 1;
   background-color: #6ba0a0;

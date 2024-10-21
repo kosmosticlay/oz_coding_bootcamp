@@ -7,19 +7,27 @@ import {
 import {
   updateTodo as updateTodoAPI,
   deleteTodo as deleteTodoAPI,
-} from "../utils/jsonAPI";
+} from "../../utils/jsonAPI";
 import { useState } from "react";
 
 const Container = styled.li`
-  background-color: ${(props) => (props.$isDone ? "gray" : "blueviolet")};
   list-style: none;
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 10px;
+  &:hover {
+    box-shadow: 2px 2px 2px 2px black;
+  }
 `;
+//   background-color: ${(props) =>
+//  props.$isDone ? "#cdcdcd" : "transparent};
+//    box-shadow: ${(props) =>
+//  props.$isDone ? "none" : "2px 2px 2px 2px black"};
 
 const EditItemContent = styled.form`
+  max-width: 520px;
   width: 55%;
   display: flex;
   align-items: center;
@@ -40,8 +48,8 @@ const EditItemContent = styled.form`
 `;
 
 const ItemContent = styled.div`
+  max-width: 520px;
   width: 55%;
-  background-color: antiquewhite;
   display: flex;
   gap: 10px;
   cursor: pointer;
@@ -58,13 +66,15 @@ const ItemContent = styled.div`
 
 const Tags = styled.ul`
   width: 30%;
-  background-color: aquamarine;
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
   li {
+    font-size: 0.8rem;
     padding: 8px 15px;
-    border: 1px solid black;
     border-radius: 20px;
+    background-color: black;
+    color: white;
   }
 `;
 const StarIcon = styled(OriginalStarIcon)`

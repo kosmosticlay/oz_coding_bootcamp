@@ -1,16 +1,48 @@
 {
   "todos": [
     {
-      "id": "1ac0baf2-3268-461b-b73e-64b57be31709",
-      "todo": "두번째 테스트 데이터",
-      "tags": ["333", "4444"],
+      "id": "0dbe6ceb-0a6c-4501-abd9-9f8e3089bc1d",
+      "todo": "리액트 공부하기",
+      "tags": [
+        "Private",
+        "Study"
+      ],
+      "isDone": false,
+      "isFavorite": true
+    },
+    {
+      "id": "6cca964c-b5b5-43b0-8999-72ef52dfa0f2",
+      "todo": "데일리 과제 제출하기",
+      "tags": [
+        "Private",
+        "Study"
+      ],
+      "isDone": false,
+      "isFavorite": true
+    },
+    {
+      "id": "65f4f258-2830-44b3-a961-2d87ad498229",
+      "todo": "헬스장 가서 1시간 운동하기",
+      "tags": [
+        "Sports"
+      ],
+      "isDone": true,
+      "isFavorite": false
+    },
+    {
+      "id": "a7abcf6b-a187-4808-8830-c28b6e3798dd",
+      "todo": "방 청소 하기",
+      "tags": [
+        "Private",
+        "Housework"
+      ],
       "isDone": false,
       "isFavorite": false
     },
     {
-      "id": "f0452f0b-1216-4e62-8ee9-3f4de4a75ec9",
-      "todo": "수정된 데이터",
-      "tags": ["55555"],
+      "id": "1d1cbb17-3db0-4fc5-b12e-86d83ea7bf19",
+      "todo": "ㄴㅇㄹㄴ",
+      "tags": [],
       "isDone": false,
       "isFavorite": false
     }

@@ -1,7 +1,19 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-import getRandomQuote from "../utils/getRandomQuote";
+import { v4 as uuidv4 } from "uuid";
+import styled, { keyframes } from "styled-components";
+import getRandomQuote from "../../utils/getRandomQuote";
 import { ArrowPathIcon as OriginalArrowPathIcon } from "@heroicons/react/24/outline";
+
+const slideUp = keyframes`
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+`;
 
 const Wrapper = styled.div`
   min-width: 300px;
@@ -14,6 +26,10 @@ const Wrapper = styled.div`
   align-items: center;
   gap: 10px;
   position: relative;
+  border-radius: 20px;
+  p {
+    animation: ${slideUp} 0.5s ease-out;
+  }
 `;
 
 const ArrowPathIcon = styled(OriginalArrowPathIcon)`
@@ -40,8 +56,8 @@ export default function Quotes() {
 
   return (
     <Wrapper>
-      <p>{quote.quote}</p>
-      <p>{quote.author}</p>
+      <p key={uuidv4()}>{quote.quote}</p>
+      <p key={uuidv4()}>{quote.author}</p>
       <ArrowPathIcon onClick={handleClick} />
     </Wrapper>
   );

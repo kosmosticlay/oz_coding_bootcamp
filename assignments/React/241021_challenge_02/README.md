@@ -1,6 +1,8 @@
 # Todo App
 
-## 데모 영상
+## 데모
+
+![alt text](image.png)
 
 ## 최소 요구 사항
 

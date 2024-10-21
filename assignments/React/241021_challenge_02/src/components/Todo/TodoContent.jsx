@@ -1,21 +1,19 @@
 import styled from "styled-components";
 import TodoItem from "./TodoItem";
 import Filter from "./Filter";
-import { getTodos } from "../utils/jsonAPI";
-import { useState, useEffect } from "react";
+import { getTodos } from "../../utils/jsonAPI";
+import { useEffect } from "react";
 
 const Wrapper = styled.ul`
   width: 100%;
   margin-top: 20px;
   display: flex;
   flex-direction: column;
-  gap: 15px;
   margin-bottom: 100px;
+  gap: 8px;
 `;
 
-export default function TodoContent() {
-  const [todos, setTodos] = useState([]);
-
+export default function TodoContent({ todos, setTodos }) {
   useEffect(() => {
     const fetchTodos = async () => {
       const fetchedTodos = await getTodos();
