@@ -161,11 +161,13 @@ export default function TodoItem({ todo, updateTodo, removeTodo }) {
           <p>{todo.todo}</p>
         </ItemContent>
       )}
+
       <Tags>
         {todo.tags.map((tag, idx) => (
-          <li key={idx}>{tag}</li>
+          <div key={idx}>{tag.tagName}</div>
         ))}
       </Tags>
+
       <Controls>
         <StarIcon onClick={toggleFavorite} $isFavorite={todo.isFavorite} />
         <PencilIcon onClick={toggleEdit} $isEditing={isEditing} />

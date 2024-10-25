@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import { PlusIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
+import { XMarkIcon } from "@heroicons/react/24/outline";
+import { v4 as uuidv4 } from "uuid";
 
 const Wrapper = styled.section`
   width: 100%;
@@ -13,7 +14,6 @@ const TagList = styled.ul`
   width: 100%;
   height: max-content;
   display: flex;
-
   flex-wrap: wrap;
   justify-content: flex-start;
   gap: 10px;
@@ -25,19 +25,37 @@ const TagItem = styled.li`
   border: 1px solid black;
   border-radius: 20px;
   cursor: pointer;
-  button {
-    all: unset;
+  background-color: ${(props) => (props.$isSelected ? "black" : "white")};
+  color: ${(props) => (props.$isSelected ? "white" : "black")};
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  svg {
+    width: 15px;
+    stroke-width: 2;
+    &:hover {
+      color: red;
+    }
   }
-  background-color: ${(props) => (props.selected ? "black" : "white")};
-  color: ${(props) => (props.selected ? "white" : "black")};
 `;
 
-export default function Tags({ tags, setTags }) {
+// tags = [{id:uuidv4(), tagName, isSelected}]
+export default function Tags({ tags, setTags, selectedTags, setSelectedTags }) {
   const [isAdding, setIsAdding] = useState(false);
   const [newTag, setNewTag] = useState("");
 
-  const deleteTag = (indexToDelete) => {
-    setTags((prevTags) => prevTags.filter((_, idx) => idx !== indexToDelete));
+  const deleteTag = (e) => {
+    e.stopPropagation(); // 상위 요소로 이벤트 전파 차단
+    const tagId = e.currentTarget.getAttribute("data-id");
+    setTags((prevTags) => prevTags.filter((tag) => tag.id !== tagId));
+  };
+
+  const selectTag = (tagId) => {
+    const updatedTags = tags.map((tag) =>
+      tag.id === tagId ? { ...tag, isSelected: !tag.isSelected } : tag
+    );
+    setTags(updatedTags);
+    setSelectedTags(updatedTags.filter((tag) => tag.isSelected));
   };
 
   const toggleNewTag = () => {
@@ -48,17 +66,25 @@ export default function Tags({ tags, setTags }) {
     e.preventDefault();
     if (newTag === "") return;
     setIsAdding((prev) => !prev);
-    setTags([...tags, newTag]);
+    setTags([...tags, { id: uuidv4(), tagName: newTag, isSelected: false }]);
     setNewTag("");
   };
+
+  console.log(tags, selectedTags);
 
   return (
     <Wrapper>
       <TagList>
-        {tags.map((tag, idx) => {
+        {tags.map((tag) => {
+          const { id, tagName, isSelected } = tag;
           return (
-            <TagItem key={idx} onClick={() => deleteTag(idx)}>
-              {tag}
+            <TagItem
+              key={id}
+              onClick={() => selectTag(id)}
+              $isSelected={isSelected}
+            >
+              {tagName}
+              <XMarkIcon data-id={id} onClick={deleteTag} />
             </TagItem>
           );
         })}

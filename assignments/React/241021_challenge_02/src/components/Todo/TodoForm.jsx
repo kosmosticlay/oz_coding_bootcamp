@@ -87,9 +87,17 @@ const InputContainer = styled.div`
 
 export default function TodoForm({ setTodos, todos }) {
   const [isSearching, setIsSearching] = useState(false);
-  const [tags, setTags] = useState([]);
   const [newTodo, setNewTodo] = useState("");
   const inputRef = useRef(null);
+  const [tags, setTags] = useState([]); // 폼에 추가한 태그 리스트
+  const [selectedTags, setSelectedTags] = useState([]); // 선택한 태그 리스트
+
+  const tagsProps = {
+    tags,
+    setTags,
+    selectedTags,
+    setSelectedTags,
+  };
 
   const handleAdd = async (event) => {
     event.preventDefault();
@@ -97,7 +105,7 @@ export default function TodoForm({ setTodos, todos }) {
     const todoItem = {
       id: uuidv4(),
       todo: newTodo,
-      tags: tags,
+      tags: selectedTags,
       isDone: false,
       isFavorite: false,
     };
@@ -115,11 +123,11 @@ export default function TodoForm({ setTodos, todos }) {
   const handleSearch = (event) => {
     event.preventDefault();
     setIsSearching(false);
-    console.log("handleSearch");
   };
+
   return (
     <Wrapper>
-      <Tags tags={tags} setTags={setTags} />
+      <Tags {...tagsProps} />
       <FormContainer>
         <AddForm onSubmit={handleAdd}>
           <InputContainer>
