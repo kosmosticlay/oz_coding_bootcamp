@@ -27,7 +27,7 @@
         "Sports"
       ],
       "isDone": true,
-      "isFavorite": false
+      "isFavorite": true
     },
     {
       "id": "a7abcf6b-a187-4808-8830-c28b6e3798dd",
@@ -37,7 +37,7 @@
         "Housework"
       ],
       "isDone": false,
-      "isFavorite": false
+      "isFavorite": true
     },
     {
       "id": "1d1cbb17-3db0-4fc5-b12e-86d83ea7bf19",
