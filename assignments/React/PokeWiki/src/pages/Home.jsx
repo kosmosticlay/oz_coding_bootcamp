@@ -1,32 +1,32 @@
-import { Link, useLoaderData } from "react-router-dom";
-import styled from "styled-components";
-
-const PokemonList = styled.ul`
-  display: flex;
-  flex-direction: column;
-`;
-
-/* 
-{ count: 1302, 
-  next: 'https://pokeapi.co/api/v2/pokemon?offset=20&limit=20', 
-  previous: null, 
-  results: Array(20)}
-*/
+import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { loadPokemonList } from "../RTK/pokemonSlice";
 
 export default function Home() {
-  const data = useLoaderData();
-  const pokemonList = data.results;
+  const dispatch = useDispatch();
+  const pokemonList = useSelector((state) => state.pokemon);
+
+  useEffect(() => {
+    if (!pokemonList || pokemonList.length === 0) {
+      dispatch(loadPokemonList());
+    }
+  }, [dispatch, pokemonList]);
 
   return (
     <>
       <h1>Home 컴포넌트</h1>
-      <PokemonList>
-        {pokemonList.map((pokemon) => (
+      <ul>
+        {pokemonList?.map((pokemon) => (
           <li key={pokemon.name}>
-            <Link to={`/detail/${pokemon.name}`}>{pokemon.krName}</Link>
+            <Link to={`/detail/${pokemon.name}`}>
+              <div>
+                <p>{pokemon.krName}</p>
+              </div>
+            </Link>
           </li>
         ))}
-      </PokemonList>
+      </ul>
     </>
   );
 }
