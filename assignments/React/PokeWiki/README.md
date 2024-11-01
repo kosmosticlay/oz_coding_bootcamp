@@ -1,6 +1,6 @@
 # 미니프로젝트 : PokeWiki
 
-### **기본 요구 사항**:
+## 📝 기본 요구 사항
 
 ### 1. **리액트 프로젝트 설정**:
 
@@ -45,3 +45,42 @@
    - 포켓몬 정보를 섹션으로 묶어서 반환합니다.
 2. **디테일 페이지**:
    - 선택된 포켓몬의 ID를 사용하여 해당 포켓몬의 상세 정보를 가져오고 표시합니다.
+
+## 🔫트러블 슈팅
+
+<details>
+   <summary><b>1. React Router의 Link와 prop을 통한 데이터 전달 문제</b></summary>
+
+<br/>
+
+**문제 상황**
+React Router에서 Link 컴포넌트를 사용해 Detail 페이지로 네비게이션하면서, 각 포켓몬의 데이터를 prop으로 전달하려 했으나, Detail 컴포넌트로 데이터가 전달되지 않는 문제가 발생하였다.
+
+**해결 방법**
+
+1. Link 컴포넌트의 `state`속성을 사용해 url을 전달한다.
+
+```javascript
+<Link to={`/detail/${pokemon.name}`} state={{ url: pokemon.url }}>
+  {pokemon.name}
+</Link>
+```
+
+2. Detail 컴포넌트에서는 `useLocation`훅을 사용하여 `state`에 접근한다.
+
+```javascript
+export default function Detail() {
+  const location = useLocation();
+  const url = location.state?.url;
+}
+```
+
+**추가 고려사항**
+Link 컴포넌트의 `state` 속성을 통해 상세 페이지에 데이터를 전달할 순 있지만, 해당 페이지를 Link 컴포넌트를 통해 접근했을 때만 데이터를 사용할 수 있다. 예를 들어, `"/detail/bulbasaur"`로 직접 페이지에 접근하면 `state`값은 `null`이 할당된다.
+=> 따라서 상세 페이지의 url 쿼리를 통해 얻은 `pokemon.name`값으로 데이터를 직접 fetch해서 받아오는 방식으로 변경하였다.
+
+```javascript
+
+```
+
+</details>

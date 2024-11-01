@@ -1,5 +1,4 @@
 import { Link, useLoaderData } from "react-router-dom";
-import { fetchPokemonList } from "../API/api";
 import styled from "styled-components";
 
 const PokemonList = styled.ul`
@@ -7,7 +6,6 @@ const PokemonList = styled.ul`
   flex-direction: column;
 `;
 
-export const homeLoader = () => fetchPokemonList();
 /* 
 { count: 1302, 
   next: 'https://pokeapi.co/api/v2/pokemon?offset=20&limit=20', 
@@ -18,14 +16,15 @@ export const homeLoader = () => fetchPokemonList();
 export default function Home() {
   const data = useLoaderData();
   const pokemonList = data.results;
-  console.log(pokemonList);
 
   return (
     <>
       <h1>Home 컴포넌트</h1>
       <PokemonList>
-        {pokemonList.map((pokemon, index) => (
-          <Link key={index}>{pokemon.name}</Link>
+        {pokemonList.map((pokemon) => (
+          <li key={pokemon.name}>
+            <Link to={`/detail/${pokemon.name}`}>{pokemon.krName}</Link>
+          </li>
         ))}
       </PokemonList>
     </>
