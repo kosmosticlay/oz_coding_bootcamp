@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { loadPokemonList } from "../RTK/pokemonSlice";
+// import Card from "../components/Card";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -19,11 +20,7 @@ export default function Home() {
       <ul>
         {pokemonList?.map((pokemon) => (
           <li key={pokemon.name}>
-            <Link to={`/detail/${pokemon.name}`}>
-              <div>
-                <p>{pokemon.krName}</p>
-              </div>
-            </Link>
+            <Link to={`/detail/${pokemon.name}`}>{/* <Card></Card> */}</Link>
           </li>
         ))}
       </ul>

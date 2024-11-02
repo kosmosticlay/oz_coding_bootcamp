@@ -1,8 +1,8 @@
 import { Link, useLoaderData } from "react-router-dom";
 
 export default function Search() {
-  const data = useLoaderData();
-  const pokemonList = data.results;
+  // const data = useLoaderData();
+  // const pokemonList = data.results;
   return (
     <>
       <h1>Search 컴포넌트</h1>
@@ -11,11 +11,11 @@ export default function Search() {
         <button>포켓몬 찾기</button>
       </form>
       <ul>
-        {pokemonList.map((pokemon) => (
+        {/* {pokemonList.map((pokemon) => (
           <li key={pokemon.name}>
             <Link to={`/detail/${pokemon.name}`}>{pokemon.krName}</Link>
           </li>
-        ))}
+        ))} */}
       </ul>
     </>
   );

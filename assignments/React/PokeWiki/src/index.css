@@ -1,3 +1,6 @@
+/* font */
+@import url("https://fonts.googleapis.com/css2?family=Anton+SC&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -11,7 +14,14 @@
   }
 
   body {
-    background-color: black;
-    color: white;
+    width: 100%;
+    min-height: 100vh;
+    color: black;
+  }
+}
+
+@layer utilities {
+  .hover-red {
+    @apply hover:text-red-700;
   }
 }
