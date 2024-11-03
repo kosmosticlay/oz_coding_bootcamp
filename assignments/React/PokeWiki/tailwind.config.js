@@ -5,6 +5,7 @@ export default {
     extend: {
       fontFamily: {
         cartoon: ["Anton SC", "sans-serif"],
+        korean: ["Jua", "sans-serif"],
       },
     },
   },

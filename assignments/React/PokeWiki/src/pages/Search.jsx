@@ -4,7 +4,7 @@ export default function Search() {
   // const data = useLoaderData();
   // const pokemonList = data.results;
   return (
-    <>
+    <div className="page">
       <h1>Search 컴포넌트</h1>
       <form>
         <input type="text" placeholder="포켓몬 이름을 입력하세요." />
@@ -17,6 +17,6 @@ export default function Search() {
           </li>
         ))} */}
       </ul>
-    </>
+    </div>
   );
 }

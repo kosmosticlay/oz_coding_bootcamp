@@ -1,3 +1,3 @@
 export default function Poketball() {
-  return <img className="size-5 mr-2" src="../../poketball2.png" />;
+  return <img className="size-8 animate-bounce" src="../../poketball2.png" />;
 }

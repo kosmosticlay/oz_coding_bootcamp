@@ -1,5 +1,6 @@
 /* font */
 @import url("https://fonts.googleapis.com/css2?family=Anton+SC&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -20,8 +21,17 @@
   }
 }
 
+@layer components {
+  .page {
+    @apply pt-36 px-32 bg-black;
+  }
+}
+
 @layer utilities {
   .hover-red {
     @apply hover:text-red-700;
+  }
+  .shadow-top-bottom-right {
+    box-shadow: 0 1px 5px 5px white;
   }
 }

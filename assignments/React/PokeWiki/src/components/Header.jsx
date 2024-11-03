@@ -9,13 +9,13 @@ export default function Header() {
   const location = useLocation();
 
   return (
-    <header className="w-full h-14 font-cartoon flex border-box">
-      <img className="w-44 h-full mr-3 p-2" src="../logo.png" />
+    <header className="z-20 fixed top-0 bg-black w-full h-24 font-cartoon flex border-box mb-5">
+      <img className="w-52 h-full mx-8 p-2" src="../logo.png" />
       <div className="flex-grow text-xl flex items-center justify-between">
         <div className="flex items-center relative">
           <Link className="flex justify-center items-center relative" to="/">
             <p
-              className={`hover:text-red-700 w-28 text-center ${
+              className={`hover:text-red-700 w-40 text-3xl text-center ${
                 location.pathname === "/" ? "text-red-700" : "text-white"
               }`}
             >
@@ -27,7 +27,7 @@ export default function Header() {
             to="/search"
           >
             <p
-              className={`hover:text-red-700 w-28 text-center ${
+              className={`hover:text-red-700 w-40 text-3xl text-center ${
                 location.pathname === "/search" ? "text-red-700" : "text-white"
               }`}
             >
@@ -39,7 +39,7 @@ export default function Header() {
               location.pathname === "/"
                 ? "translate-x-2"
                 : location.pathname === "/search"
-                ? "translate-x-[7rem]"
+                ? "translate-x-[9.75rem]"
                 : "hidden"
             }`}
           >
@@ -49,11 +49,11 @@ export default function Header() {
         <div className="flex items-center">
           {location.pathname === "/favorites" ? (
             <Link to="/favorites">
-              <HeartSolidIcon className="w-7 h-7 mr-8 cursor-pointer fill-red-700" />
+              <HeartSolidIcon className="w-10 h-10 mr-10 cursor-pointer fill-red-700" />
             </Link>
           ) : (
             <Link to="/favorites">
-              <HeartIcon className="w-7 h-7 mr-8 cursor-pointer hover:stroke-red-700" />
+              <HeartIcon className="w-10 h-10 mr-10 cursor-pointer hover:stroke-red-700" />
             </Link>
           )}
         </div>
