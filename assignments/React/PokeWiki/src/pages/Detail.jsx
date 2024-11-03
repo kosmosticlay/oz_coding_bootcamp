@@ -10,7 +10,7 @@ export default function Detail() {
 
   const pokemon = pokemonList.find((p) => p.name === name);
 
-  // Redux 상태가 없을 때 데이터 로드
+  // Redux 상태가 없을 때 데이터 로드하기
   useEffect(() => {
     if (!pokemonList || pokemonList.length === 0) {
       dispatch(loadPokemonList());
@@ -38,15 +38,17 @@ export default function Detail() {
     krFlavorText,
     captureRate,
     color,
+    isLiked,
   } = pokemon;
 
   return (
-    <div>
+    <div className="*:text-black">
       <h1>{krName}</h1>
       <img src={mainImg} alt={pokemonName} />
       <div>
         <h3>애니메이션:</h3>
       </div>
+      <p>isLiked : {`${isLiked}`}</p>
       <p>속성: {properties.join(", ")}</p>
       <p>능력: {abilities.join(", ")}</p>
       <p>

@@ -31,5 +31,6 @@ export async function transformData(id) {
       .map((entry) => entry.flavor_text),
     captureRate: krData.capture_rate,
     color: krData.color.name,
+    isLiked: false,
   };
 }

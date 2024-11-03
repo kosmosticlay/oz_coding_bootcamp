@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { transformData } from "../API/transformData";
 
-// 포켓몬 리스트 로드
+// 포켓몬 리스트 로드하기
 export const loadPokemonList = createAsyncThunk(
   "pokemon/loadList",
   async () => {
@@ -15,12 +15,21 @@ export const loadPokemonList = createAsyncThunk(
 const pokemonSlice = createSlice({
   name: "pokemon",
   initialState: [],
-  reducers: {},
+  reducers: {
+    toggleLike: (state, action) => {
+      return state.map((pokemon) =>
+        pokemon.id === action.payload
+          ? { ...pokemon, isLiked: !pokemon.isLiked }
+          : pokemon
+      );
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(loadPokemonList.fulfilled, (state, action) => {
-      return action.payload; // fulfilled일 때 상태를 바로 payload로 대체
+      return action.payload;
     });
   },
 });
 
+export const { toggleLike } = pokemonSlice.actions;
 export default pokemonSlice.reducer;

@@ -1,9 +1,20 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+
+/* icons */
+import { HeartIcon } from "@heroicons/react/24/outline";
+import { HeartIcon as HeartSolidIcon } from "@heroicons/react/24/solid";
+import { toggleLike } from "../../RTK/pokemonSlice";
 
 export default function CardItem({ pokemon }) {
   const [isHovered, setIsHovered] = useState(false);
+  const dispatch = useDispatch();
 
-  // hover 여부에 따른 동적 스타일 설정
+  const handleToggleLike = (event) => {
+    event.preventDefault();
+    dispatch(toggleLike(pokemon.id));
+  };
+
   const borderColor = isHovered ? pokemon.color : "black";
   const textColor = pokemon.color;
 
@@ -25,6 +36,16 @@ export default function CardItem({ pokemon }) {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
+        <div
+          className="z-20 top-4 right-4 absolute size-7 cursor-pointer"
+          onClick={handleToggleLike}
+        >
+          {pokemon.isLiked ? (
+            <HeartSolidIcon className="w-7 h-7 fill-red-700" />
+          ) : (
+            <HeartIcon className="w-7 h-7 text-gray-500" />
+          )}
+        </div>
         <div className="h-full flex flex-col py-5 justify-center items-center">
           <img
             className="h-32 my-5"
