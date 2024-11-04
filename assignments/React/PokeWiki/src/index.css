@@ -20,22 +20,6 @@
     background-color: black;
     color: black;
   }
-  button::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #b91c1c; /* red-700 색상 */
-    transform: translateX(-100%);
-    transition: transform 0.3s ease-out;
-    z-index: 0;
-  }
-
-  button:hover::after {
-    transform: translateX(0);
-  }
 }
 
 @layer components {

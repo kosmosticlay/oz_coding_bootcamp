@@ -46,6 +46,10 @@ export default function Detail() {
     }
   }, [pokemon]);
 
+  if (isLoading || !pokemon) {
+    return <Loader />;
+  }
+
   const toggleClick = () => {
     setTimeout(() => {
       setIsAnimating(false);
@@ -176,24 +180,6 @@ export default function Detail() {
         </section>
       </main>
       <Footer />
-      {/* <main className="w-2/3">
-        <h1>
-          <span>{name}</span>
-        </h1>
-        <div>
-          <h3>애니메이션:</h3>
-        </div>
-        <p>isLiked : {`${isLiked}`}</p>
-        <p>속성: {properties.join(", ")}</p>
-        <p>능력: {abilities.join(", ")}</p>
-        <p>
-          키: {height}m, 무게: {weight}kg
-        </p>
-        <p>경험치: {baseExp}</p>
-        <p>포획율: {captureRate}</p>
-        <p>색상: {color}</p>
-        <p>한글 설명: {krFlavorText.join(" ")}</p>
-      </main> */}
     </div>
   );
 }
