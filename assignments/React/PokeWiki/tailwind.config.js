@@ -19,6 +19,7 @@ export default {
       },
       animation: {
         "spin-once": "spinOnce 1.8s ease-in-out",
+        "spin-infinite": "spinOnce 1.8s ease-in-out infinite",
         "shake-perm": "shake 2.0s infinite",
       },
       fontFamily: {
