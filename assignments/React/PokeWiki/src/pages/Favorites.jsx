@@ -1,7 +1,16 @@
+import { useSelector } from "react-redux";
+import CardList from "../components/commons/CardList";
+
 export default function Favorites() {
+  const pokemonList = useSelector((state) => state.pokemon) || [];
+
+  const filteredList = pokemonList.filter(
+    (pokemon) => pokemon.isLiked === true
+  );
+
   return (
-    <>
-      <h1>Favorites 컴포넌트</h1>
-    </>
+    <div className="page">
+      <CardList pokemonList={filteredList} />
+    </div>
   );
 }
