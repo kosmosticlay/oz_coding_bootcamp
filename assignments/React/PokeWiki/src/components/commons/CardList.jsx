@@ -1,8 +1,7 @@
 import { useDispatch } from "react-redux";
-import { Suspense, lazy, useEffect, useState } from "react";
+import { lazy, useEffect, useState } from "react";
 import { loadPokemonList } from "../../RTK/pokemonSlice";
 import { Link } from "react-router-dom";
-import Loader from "./Loader";
 import InfoMessage from "./InfoMessage";
 
 const CardItem = lazy(() => import("./CardItem"));
@@ -22,7 +21,7 @@ export default function CardList({ pokemonList }) {
   }, [dispatch, pokemonList]);
 
   return (
-    <Suspense fallback={<Loader />}>
+    <>
       {pokemonList.length === 0 && <InfoMessage />}
       <ul className="w-full flex flex-wrap gap-14 justify-center">
         {pokemonList.map((pokemon) => (
@@ -33,6 +32,6 @@ export default function CardList({ pokemonList }) {
           </li>
         ))}
       </ul>
-    </Suspense>
+    </>
   );
 }

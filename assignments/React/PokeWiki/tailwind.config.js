@@ -25,6 +25,10 @@ export default {
         cartoon: ["Anton SC", "sans-serif"],
         korean: ["Jua", "sans-serif"],
       },
+      colors: {
+        main: "#b91c1c",
+        yellow: "#FEC20C",
+      },
     },
   },
   plugins: [],

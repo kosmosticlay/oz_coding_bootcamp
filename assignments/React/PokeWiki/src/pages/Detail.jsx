@@ -91,8 +91,8 @@ export default function Detail() {
       <ScrollToTop />
       <header className="w-full py-3 flex justify-between items-center">
         <Link className="group flex items-center" onClick={() => navigate(-1)}>
-          <ChevronLeftIcon className="group-hover:stroke-red-500 w-10 h-10 cursor-pointer" />
-          <p className="group-hover:text-red-500 text-3xl">Back</p>
+          <ChevronLeftIcon className="group-hover:stroke-main w-10 h-10 cursor-pointer" />
+          <p className="group-hover:text-main text-3xl">Back</p>
         </Link>
       </header>
       <main className="w-full flex flex-col items-center">
@@ -112,40 +112,43 @@ export default function Detail() {
         </h1>
         <section className="flex justify-center gap-10">
           <div className="w-[250px] my-10 cursor-pointer flex flex-col justify-center items-center">
-            {isLoading ? (
-              <Loader className="loader w-[250px]">로딩 중...</Loader>
-            ) : isClicked ? (
-              <img
-                className={`h-56 ${isAnimating ? "animate-spin-once" : ""}`}
-                src={backGif}
-                alt={pokemonName}
-                onClick={toggleClick}
-                onLoad={handleImageLoad}
-              />
-            ) : (
-              <img
-                className={`h-56 ${isAnimating ? "animate-spin-once" : ""}`}
-                src={frontGif}
-                alt={pokemonName}
-                onClick={toggleClick}
-                onLoad={handleImageLoad}
-              />
-            )}
-            <p className="my-5">Click to rotate</p>
+            <div className="flex flex-col items-center group">
+              {isLoading ? (
+                <Loader className="loader w-[250px]">로딩 중...</Loader>
+              ) : isClicked ? (
+                <img
+                  className={`h-56 ${isAnimating ? "animate-spin-once" : ""}`}
+                  src={backGif}
+                  alt={pokemonName}
+                  onClick={toggleClick}
+                  onLoad={handleImageLoad}
+                />
+              ) : (
+                <img
+                  className={`h-56 ${isAnimating ? "animate-spin-once" : ""}`}
+                  src={frontGif}
+                  alt={pokemonName}
+                  onClick={toggleClick}
+                  onLoad={handleImageLoad}
+                />
+              )}
+              <p className="my-5 group-hover:text-main">Click to rotate</p>
+            </div>
+
             <div
-              style={{ borderColor: pokemon.isLiked ? "#b91c1c" : "gray" }}
-              className="w-24 p-1 border-2 rounded-md cursor-pointer flex justify-center items-center gap-2"
+              style={{ borderColor: pokemon.isLiked ? "#b91c1c" : "white" }}
+              className="group  w-24 p-1 border-2 rounded-md cursor-pointer flex justify-center items-center gap-2"
               onClick={handleToggleLike}
             >
               {pokemon.isLiked ? (
                 <>
-                  <HeartSolidIcon className="w-5 h-5 fill-red-700" />
-                  <p className="text-xl text-red-700">Liked!</p>
+                  <HeartSolidIcon className="w-5 h-5 fill-main" />
+                  <p className="text-xl text-main">Liked!</p>
                 </>
               ) : (
                 <>
-                  <HeartIcon className="w-5 h-5 text-gray-500" />
-                  <p className="text-xl">Like? </p>
+                  <HeartIcon className="w-5 h-5 group-hover:animate-pulse group-hover:stroke-main" />
+                  <p className="text-xl group-hover:text-main">Like? </p>
                 </>
               )}
             </div>

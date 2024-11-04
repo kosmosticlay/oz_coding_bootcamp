@@ -40,7 +40,7 @@ createRoot(document.getElementById("root")).render(
     <Provider store={store}>
       <Suspense
         fallback={
-          <div className="h-screen">
+          <div className="h-screen flex items-center">
             <Loader />
           </div>
         }

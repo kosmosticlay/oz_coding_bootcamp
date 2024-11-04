@@ -15,20 +15,20 @@ export default function Header() {
         <div className="flex items-center relative">
           <Link className="flex justify-center items-center relative" to="/">
             <p
-              className={`hover:text-red-700 w-40 text-3xl text-center ${
-                location.pathname === "/" ? "text-red-700" : "text-white"
+              className={`hover:text-main w-40 text-3xl text-center ${
+                location.pathname === "/" ? "text-main" : "text-white"
               }`}
             >
               Home
             </p>
           </Link>
           <Link
-            className="hover:text-red-700 flex justify-center items-center relative"
+            className="hover:text-main flex justify-center items-center relative"
             to="/search"
           >
             <p
-              className={`hover:text-red-700 w-40 text-3xl text-center ${
-                location.pathname === "/search" ? "text-red-700" : "text-white"
+              className={`hover:text-main w-40 text-3xl text-center ${
+                location.pathname === "/search" ? "text-main" : "text-white"
               }`}
             >
               Search
@@ -49,11 +49,11 @@ export default function Header() {
         <div className="flex items-center">
           {location.pathname === "/favorites" ? (
             <Link to="/favorites">
-              <HeartSolidIcon className="w-10 h-10 mr-10 cursor-pointer fill-red-700" />
+              <HeartSolidIcon className="w-10 h-10 mr-10 cursor-pointer fill-main" />
             </Link>
           ) : (
             <Link to="/favorites">
-              <HeartIcon className="w-10 h-10 mr-10 cursor-pointer hover:stroke-red-700" />
+              <HeartIcon className="w-10 h-10 mr-10 cursor-pointer hover:stroke-main" />
             </Link>
           )}
         </div>

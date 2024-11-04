@@ -37,7 +37,7 @@ export default function CardItem({ pokemon }) {
 
       {/* 카드 본체 */}
       <div
-        className={`relative z-10 w-full h-full bg-black border-2 border-white rounded-md transition-transform duration-300 ${
+        className={`relative z-10 w-full h-full bg-black border-2 border-white  rounded-md transition-transform duration-300 ${
           isHovered ? "-translate-x-2 translate-y-[-10px]" : ""
         }`}
         onMouseEnter={() => setIsHovered(true)}
@@ -48,7 +48,7 @@ export default function CardItem({ pokemon }) {
           onClick={handleToggleLike}
         >
           {pokemon.isLiked ? (
-            <HeartSolidIcon className="w-7 h-7 fill-red-700" />
+            <HeartSolidIcon className="w-7 h-7 fill-main" />
           ) : (
             <HeartIcon className="w-7 h-7 text-gray-500" />
           )}
@@ -74,7 +74,7 @@ export default function CardItem({ pokemon }) {
             </p>
           </div>
           {isHovered && (
-            <div className="px-3 py-1 rounded-md bg-white text-black font-korean">
+            <div className="px-3 py-1 rounded-md bg-yellow text-black font-korean">
               상세보기
             </div>
           )}
