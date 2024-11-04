@@ -1,15 +1,21 @@
-import { StrictMode } from "react";
+import { lazy, StrictMode, Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "./pages/Home.jsx";
-import Detail from "./pages/Detail.jsx";
-import Search from "./pages/Search.jsx";
-import Favorites from "./pages/Favorites.jsx";
+// import Home from "./pages/Home.jsx";
+// import Detail from "./pages/Detail.jsx";
+// import Search from "./pages/Search.jsx";
+// import Favorites from "./pages/Favorites.jsx";
 import NotFound from "./pages/NotFound.jsx";
 import { Provider } from "react-redux";
 import store from "./RTK/store.js";
+import Loader from "./components/commons/Loader.jsx";
+
+const Home = lazy(() => import("./pages/Home.jsx"));
+const Detail = lazy(() => import("./pages/Detail.jsx"));
+const Search = lazy(() => import("./pages/Search.jsx"));
+const Favorites = lazy(() => import("./pages/Favorites.jsx"));
 
 const router = createBrowserRouter([
   {
@@ -32,7 +38,15 @@ const router = createBrowserRouter([
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <Suspense
+        fallback={
+          <div className="h-screen">
+            <Loader />
+          </div>
+        }
+      >
+        <RouterProvider router={router} />
+      </Suspense>
     </Provider>
   </StrictMode>
 );

@@ -1,10 +1,11 @@
 import { useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
+import { Suspense, lazy, useEffect, useState } from "react";
 import { loadPokemonList } from "../../RTK/pokemonSlice";
 import { Link } from "react-router-dom";
-import CardItem from "./CardItem";
 import Loader from "./Loader";
 import InfoMessage from "./InfoMessage";
+
+const CardItem = lazy(() => import("./CardItem"));
 
 export default function CardList({ pokemonList }) {
   const dispatch = useDispatch();
@@ -20,20 +21,18 @@ export default function CardList({ pokemonList }) {
     }
   }, [dispatch, pokemonList]);
 
-  if (isLoading) {
-    return <Loader />;
-  }
-
   return (
-    <ul className="w-full flex flex-wrap gap-14 justify-center">
+    <Suspense fallback={<Loader />}>
       {pokemonList.length === 0 && <InfoMessage />}
-      {pokemonList.map((pokemon) => (
-        <li key={pokemon.name}>
-          <Link to={`/detail/${pokemon.name}`}>
-            <CardItem pokemon={pokemon} />
-          </Link>
-        </li>
-      ))}
-    </ul>
+      <ul className="w-full flex flex-wrap gap-14 justify-center">
+        {pokemonList.map((pokemon) => (
+          <li key={pokemon.name}>
+            <Link to={`/detail/${pokemon.name}`}>
+              <CardItem pokemon={pokemon} />
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </Suspense>
   );
 }

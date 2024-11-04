@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState, useMemo } from "react";
 import { useDispatch } from "react-redux";
 
 /* icons */
@@ -11,13 +11,19 @@ export default function CardItem({ pokemon }) {
 
   const dispatch = useDispatch();
 
-  const handleToggleLike = (event) => {
-    event.preventDefault();
-    dispatch(toggleLike(pokemon.id));
-  };
+  const handleToggleLike = useCallback(
+    (event) => {
+      event.preventDefault();
+      dispatch(toggleLike(pokemon.id));
+    },
+    [dispatch, pokemon.id]
+  );
 
-  const borderColor = isHovered ? pokemon.color : "black";
-  const textColor = pokemon.color;
+  const borderColor = useMemo(
+    () => (isHovered ? pokemon.color : "black"),
+    [isHovered, pokemon.color]
+  );
+  const textColor = useMemo(() => pokemon.color, [pokemon.color]);
 
   return (
     <div className="relative w-56 h-80">
