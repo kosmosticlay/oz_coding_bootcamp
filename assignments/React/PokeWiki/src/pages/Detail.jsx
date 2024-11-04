@@ -1,12 +1,22 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { loadPokemonList } from "../RTK/pokemonSlice";
-import { useEffect } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { loadPokemonList, toggleLike } from "../RTK/pokemonSlice";
+import { useEffect, useState } from "react";
+import { CheckIcon, ChevronLeftIcon } from "@heroicons/react/24/outline";
+import { HeartIcon } from "@heroicons/react/24/outline";
+import { HeartIcon as HeartSolidIcon } from "@heroicons/react/24/solid";
+import Footer from "../components/Footer";
+import ScrollToTop from "../components/commons/ScrollToTop";
+import Loader from "../components/commons/Loader";
 
 export default function Detail() {
-  const { name } = useParams();
+  let { name } = useParams();
   const dispatch = useDispatch();
   const pokemonList = useSelector((state) => state.pokemon);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isClicked, setIsClicked] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const navigate = useNavigate();
 
   const pokemon = pokemonList.find((p) => p.name === name);
 
@@ -17,14 +27,43 @@ export default function Detail() {
     }
   }, [dispatch, pokemonList]);
 
-  if (!pokemon) {
-    if (!pokemonList || pokemonList.length === 0) {
-      return <p>로딩 중...</p>;
-    }
-    return <p>포켓몬 정보를 찾을 수 없습니다.</p>;
-  }
+  useEffect(() => {
+    if (pokemon) {
+      // 새로운 이미지 객체 생성 후 로딩을 체크
+      const frontImage = new Image();
+      const backImage = new Image();
 
-  const {
+      frontImage.src = pokemon.imageUrl.frontGif;
+      backImage.src = pokemon.imageUrl.backGif;
+
+      // 두 이미지가 모두 로드된 경우 로딩 상태 해제
+      frontImage.onload = () => {
+        if (backImage.complete) setIsLoading(false);
+      };
+      backImage.onload = () => {
+        if (frontImage.complete) setIsLoading(false);
+      };
+    }
+  }, [pokemon]);
+
+  const toggleClick = () => {
+    setTimeout(() => {
+      setIsAnimating(false);
+      setIsClicked((prev) => !prev);
+    }, 600);
+    setIsAnimating(true);
+  };
+
+  const handleToggleLike = (event) => {
+    event.preventDefault();
+    dispatch(toggleLike(pokemon.id));
+  };
+
+  const handleImageLoad = () => {
+    setIsLoading(false);
+  };
+
+  let {
     id,
     pokemonName,
     properties,
@@ -41,23 +80,120 @@ export default function Detail() {
     isLiked,
   } = pokemon;
 
+  name = name.charAt(0).toUpperCase() + name.slice(1);
+
   return (
-    <div className="*:text-black">
-      <h1>{krName}</h1>
-      <img src={mainImg} alt={pokemonName} />
-      <div>
-        <h3>애니메이션:</h3>
-      </div>
-      <p>isLiked : {`${isLiked}`}</p>
-      <p>속성: {properties.join(", ")}</p>
-      <p>능력: {abilities.join(", ")}</p>
-      <p>
-        키: {height}m, 무게: {weight}kg
-      </p>
-      <p>경험치: {baseExp}</p>
-      <p>포획율: {captureRate}</p>
-      <p>색상: {color}</p>
-      <p>한글 설명: {krFlavorText.join(" ")}</p>
+    <div className="font-cartoon min-h-screen px-56 overflow-hidden bg-black flex flex-col items-center">
+      <ScrollToTop />
+      <header className="w-full py-3 flex justify-between items-center">
+        <Link className="group flex items-center" onClick={() => navigate(-1)}>
+          <ChevronLeftIcon className="group-hover:stroke-red-500 w-10 h-10 cursor-pointer" />
+          <p className="group-hover:text-red-500 text-3xl">Back</p>
+        </Link>
+      </header>
+      <main className="w-full flex flex-col items-center">
+        <h1 className="text-center flex justify-center items-center gap-5">
+          <span className="w-14 h-14 mb-2 bg-slate-400 inline-block">img</span>
+          <div>
+            <span style={{ color: pokemon.color }} className={"text-5xl"}>
+              {name}
+            </span>
+            <span
+              style={{ color: pokemon.color }}
+              className="font-korean text-2xl ml-3"
+            >
+              ({krName})
+            </span>
+          </div>
+        </h1>
+        <section className="flex justify-center gap-10">
+          <div className="w-[250px] my-10 cursor-pointer flex flex-col justify-center items-center">
+            {isLoading ? (
+              <Loader className="loader w-[250px]">로딩 중...</Loader>
+            ) : isClicked ? (
+              <img
+                className={`h-56 ${isAnimating ? "animate-spin-once" : ""}`}
+                src={backGif}
+                alt={pokemonName}
+                onClick={toggleClick}
+                onLoad={handleImageLoad}
+              />
+            ) : (
+              <img
+                className={`h-56 ${isAnimating ? "animate-spin-once" : ""}`}
+                src={frontGif}
+                alt={pokemonName}
+                onClick={toggleClick}
+                onLoad={handleImageLoad}
+              />
+            )}
+            <p className="my-5">Click to rotate</p>
+            <div
+              style={{ borderColor: pokemon.isLiked ? "#b91c1c" : "gray" }}
+              className="w-24 p-1 border-2 rounded-md cursor-pointer flex justify-center items-center gap-2"
+              onClick={handleToggleLike}
+            >
+              {pokemon.isLiked ? (
+                <>
+                  <HeartSolidIcon className="w-5 h-5 fill-red-700" />
+                  <p className="text-xl text-red-700">Liked!</p>
+                </>
+              ) : (
+                <>
+                  <HeartIcon className="w-5 h-5 text-gray-500" />
+                  <p className="text-xl">Like? </p>
+                </>
+              )}
+            </div>
+            {/* 
+              스탯 탭 적용 예정
+            */}
+          </div>
+          <div className="has-[p,h2]:font-korean w-[400px] h-32 pt-10 text-xl flex flex-col gap-2">
+            <h2 className="text-3xl mb-5 border-b-2 pb-3">기본 정보</h2>
+            <p className="">
+              신장 : <span>{`${height}m`}</span>
+            </p>
+            <p className="">
+              몸무게 : <span>{`${weight}kg`}</span>
+            </p>
+            <p className="">메인 능력: {abilities.join(", ")}</p>
+            <p className="">속성: {properties.join(", ")}</p>
+            <p className="">경험치: {baseExp}</p>
+            <p>포획율: {`${captureRate}%`}</p>
+          </div>
+        </section>
+        <section className="has-[p,h2]:font-korean my-5 w-[690px]">
+          <h2 className=" text-3xl mb-5 border-b-2 pb-3">포켓몬 일지</h2>
+          <ul className="list-disc list-inside flex flex-col text-xl gap-3">
+            {krFlavorText.map((text, index) => (
+              <li className="flex" key={index}>
+                <CheckIcon className="size-5 mr-3" />
+                {text}
+              </li>
+            ))}
+          </ul>
+        </section>
+      </main>
+      <Footer />
+      {/* <main className="w-2/3">
+        <h1>
+          <span>{name}</span>
+        </h1>
+        <div>
+          <h3>애니메이션:</h3>
+        </div>
+        <p>isLiked : {`${isLiked}`}</p>
+        <p>속성: {properties.join(", ")}</p>
+        <p>능력: {abilities.join(", ")}</p>
+        <p>
+          키: {height}m, 무게: {weight}kg
+        </p>
+        <p>경험치: {baseExp}</p>
+        <p>포획율: {captureRate}</p>
+        <p>색상: {color}</p>
+        <p>한글 설명: {krFlavorText.join(" ")}</p>
+      </main> */}
     </div>
   );
 }

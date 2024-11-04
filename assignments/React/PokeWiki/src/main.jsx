@@ -18,10 +18,14 @@ const router = createBrowserRouter([
     errorElement: <NotFound />, // 에러 처리 컴포넌트
     children: [
       { path: "", element: <Home /> }, // 메인 페이지
-      { path: "detail/:name", element: <Detail /> }, // 선택된 포켓몬 상세 정보
       { path: "search", element: <Search /> }, // 검색 페이지
       { path: "favorites", element: <Favorites /> }, // 즐겨찾기 페이지
     ],
+  },
+  {
+    path: "detail/:name",
+    element: <Detail />,
+    errorElement: <NotFound />, // 선택된 포켓몬 상세 정보
   },
 ]);
 

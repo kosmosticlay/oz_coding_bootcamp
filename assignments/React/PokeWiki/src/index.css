@@ -17,6 +17,7 @@
   body {
     width: 100%;
     min-height: 100vh;
+    background-color: black;
     color: black;
   }
 }
@@ -24,6 +25,9 @@
 @layer components {
   .page {
     @apply pt-36 px-32 bg-black;
+  }
+  .loader {
+    @apply bg-red-200;
   }
 }
 

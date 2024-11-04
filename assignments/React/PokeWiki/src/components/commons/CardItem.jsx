@@ -8,6 +8,7 @@ import { toggleLike } from "../../RTK/pokemonSlice";
 
 export default function CardItem({ pokemon }) {
   const [isHovered, setIsHovered] = useState(false);
+
   const dispatch = useDispatch();
 
   const handleToggleLike = (event) => {
