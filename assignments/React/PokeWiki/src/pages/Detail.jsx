@@ -4,7 +4,10 @@ import { loadPokemonList, toggleLike } from "../RTK/pokemonSlice";
 import { useEffect, useState } from "react";
 import { CheckIcon, ChevronLeftIcon } from "@heroicons/react/24/outline";
 import { HeartIcon } from "@heroicons/react/24/outline";
-import { HeartIcon as HeartSolidIcon } from "@heroicons/react/24/solid";
+import {
+  HeartIcon as HeartSolidIcon,
+  HomeIcon,
+} from "@heroicons/react/24/solid";
 import Footer from "../components/Footer";
 import ScrollToTop from "../components/commons/ScrollToTop";
 import Loader from "../components/commons/Loader";
@@ -20,29 +23,31 @@ export default function Detail() {
 
   const pokemon = pokemonList.find((p) => p.name === name);
 
-  // Redux 상태가 없을 때 데이터 로드하기
   useEffect(() => {
     if (!pokemonList || pokemonList.length === 0) {
-      dispatch(loadPokemonList());
+      setIsLoading(true);
+      dispatch(loadPokemonList()).finally(() => setIsLoading(false));
+    } else {
+      setIsLoading(false);
     }
   }, [dispatch, pokemonList]);
 
   useEffect(() => {
     if (pokemon) {
-      // 새로운 이미지 객체 생성 후 로딩을 체크
       const frontImage = new Image();
       const backImage = new Image();
 
       frontImage.src = pokemon.imageUrl.frontGif;
       backImage.src = pokemon.imageUrl.backGif;
 
-      // 두 이미지가 모두 로드된 경우 로딩 상태 해제
-      frontImage.onload = () => {
-        if (backImage.complete) setIsLoading(false);
+      const handleImageLoad = () => {
+        if (frontImage.complete && backImage.complete) {
+          setIsLoading(false);
+        }
       };
-      backImage.onload = () => {
-        if (frontImage.complete) setIsLoading(false);
-      };
+
+      frontImage.onload = handleImageLoad;
+      backImage.onload = handleImageLoad;
     }
   }, [pokemon]);
 
@@ -68,23 +73,24 @@ export default function Detail() {
   };
 
   let {
-    id,
     pokemonName,
     properties,
     abilities,
     height,
     weight,
-    imageUrl: { mainImg, frontGif, backGif },
+    imageUrl: { frontGif, backGif },
     baseExp,
     stats,
     krName,
     krFlavorText,
     captureRate,
     color,
-    isLiked,
   } = pokemon;
 
+  console.log(color);
   name = name.charAt(0).toUpperCase() + name.slice(1);
+
+  const propertyImageSrc = `/${properties[0].toLowerCase()}.png`;
 
   return (
     <div className="font-cartoon min-h-screen px-56 overflow-hidden bg-black flex flex-col items-center">
@@ -94,10 +100,17 @@ export default function Detail() {
           <ChevronLeftIcon className="group-hover:stroke-main w-10 h-10 cursor-pointer" />
           <p className="group-hover:text-main text-3xl">Back</p>
         </Link>
+        <Link to="/">
+          <HomeIcon className="w-10 h-10 cursor-pointer hover:fill-main" />
+        </Link>
       </header>
       <main className="w-full flex flex-col items-center">
         <h1 className="text-center flex justify-center items-center gap-5">
-          <span className="w-14 h-14 mb-2 bg-slate-400 inline-block">img</span>
+          <img
+            src={propertyImageSrc}
+            alt={properties[0]}
+            className="w-14 h-14 mb-2"
+          />
           <div>
             <span style={{ color: pokemon.color }} className={"text-5xl"}>
               {name}
@@ -114,7 +127,7 @@ export default function Detail() {
           <div className="w-[250px] my-10 cursor-pointer flex flex-col justify-center items-center">
             <div className="flex flex-col items-center group">
               {isLoading ? (
-                <Loader className="loader w-[250px]">로딩 중...</Loader>
+                <Loader className="w-[250px]">로딩 중...</Loader>
               ) : isClicked ? (
                 <img
                   className={`h-56 ${isAnimating ? "animate-spin-once" : ""}`}
@@ -136,8 +149,9 @@ export default function Detail() {
             </div>
 
             <div
-              style={{ borderColor: pokemon.isLiked ? "#b91c1c" : "white" }}
-              className="group  w-24 p-1 border-2 rounded-md cursor-pointer flex justify-center items-center gap-2"
+              className={`${pokemon.isLiked ? "border-main" : "white"} ${
+                pokemon.isLiked ? "" : "hover:border-yellow"
+              } group w-24 p-1 border-2 rounded-md cursor-pointer flex justify-center items-center gap-2`}
               onClick={handleToggleLike}
             >
               {pokemon.isLiked ? (
@@ -147,8 +161,8 @@ export default function Detail() {
                 </>
               ) : (
                 <>
-                  <HeartIcon className="w-5 h-5 group-hover:animate-pulse group-hover:stroke-main" />
-                  <p className="text-xl group-hover:text-main">Like? </p>
+                  <HeartSolidIcon className="w-5 h-5 group-hover:animate-ping group-hover:fill-yellow" />
+                  <p className="text-xl group-hover:text-yellow">Like? </p>
                 </>
               )}
             </div>

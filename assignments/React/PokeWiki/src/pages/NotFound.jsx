@@ -6,7 +6,7 @@ export default function NotFound() {
   return (
     <div className="w-full h-screen gap-5 flex flex-col justify-center items-center">
       <h1 className="text-yellow font-cartoon text-7xl">Page NotFound </h1>
-      <img className="w-56 animate-spin-infinite" src={".././404.png"} />
+      <img className="w-44 animate-spin-infinite" src={".././404.png"} />
       <p className="text-yellow font-korean text-3xl">
         페이지를 찾을 수 없습니다!
       </p>

@@ -1,5 +1,14 @@
 import { getPokemonData, getPokemonKRData } from "../API/api";
 
+const colorMapping = {
+  red: "#b91c1c",
+  yellow: "#FEC20C",
+  green: "#3BCB01",
+  blue: "#0d56ff",
+  black: "#ffffff",
+  brown: "#734848",
+};
+
 // 기본 데이터 + 한글 데이터 -> 커스텀 포켓몬 객체 생성
 export async function transformData(id) {
   const data = await getPokemonData(id);
@@ -23,6 +32,7 @@ export async function transformData(id) {
       acc[stat.stat.name] = stat.base_stat;
       return acc;
     }, {}),
+
     /* krData */
     krName: krData.names.find((nameData) => nameData.language.name === "ko")
       ?.name,
@@ -30,7 +40,7 @@ export async function transformData(id) {
       .filter((entry) => entry.language.name === "ko")
       .map((entry) => entry.flavor_text),
     captureRate: krData.capture_rate,
-    color: krData.color.name,
+    color: colorMapping[krData.color.name] || krData.color.name,
     isLiked: false,
   };
 }

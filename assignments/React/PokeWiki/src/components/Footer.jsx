@@ -6,7 +6,7 @@ export default function Footer() {
         <img className="animate-shake-perm w-60" src={"../../poketball1.png"} />
       </div>
       <div className="font-cartoon mt-20 mb-10 text-2xl">
-        Designed and built by Kosmosticlay
+        Built by Kosmosticlay
       </div>
     </footer>
   );

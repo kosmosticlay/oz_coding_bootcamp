@@ -26,9 +26,6 @@
   .page {
     @apply pt-36 px-32 bg-black;
   }
-  .loader {
-    @apply bg-red-200;
-  }
 }
 
 @layer utilities {
