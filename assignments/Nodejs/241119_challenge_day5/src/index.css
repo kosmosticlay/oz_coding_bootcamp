@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-black text-white;
+  }
+}
+
+@layer components {
+  .login-btn-container {
+    @apply flex justify-center w-full;
+  }
+  .login-btn {
+    @apply text-center py-2 px-7 rounded-lg hover:bg-gray-500 transition-all duration-300 active:scale-90;
+  }
+}
